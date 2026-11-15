@@ -5,6 +5,7 @@
  "minecraft": "1.20.1",
  "forge": "47.4.0",
  "base_url": "https://raw.githubusercontent.com/SnowUlises/Calaca-War/main/",
+ "novedades": "https://raw.githubusercontent.com/SnowUlises/Calaca-War/main/novedades.md",
  "archivos": [
   {
    "path": "config/beforethefall-filming.properties",
@@ -440,7 +441,28 @@
    "path": "mods/reactivemusic-forge-1.3.5+1.20.1.jar",
    "size": 294838232,
    "sha1": "e5a9cd891b0f11c476f1d93d87a4c4770c77477c",
-   "url": "https://github.com/SnowUlises/Calaca-War/releases/download/archivos-grandes/reactivemusic-forge-1.3.5-1.20.1.jar"
+   "parts": [
+    {
+     "path": "partes/mods/reactivemusic-forge-1.3.5+1.20.1.jar.001",
+     "size": 95000000,
+     "sha1": "ca9612f17c6f492b53ed10a52119804115c349c1"
+    },
+    {
+     "path": "partes/mods/reactivemusic-forge-1.3.5+1.20.1.jar.002",
+     "size": 95000000,
+     "sha1": "ebe8664fa4621795d9c9202f41e10575702692fd"
+    },
+    {
+     "path": "partes/mods/reactivemusic-forge-1.3.5+1.20.1.jar.003",
+     "size": 95000000,
+     "sha1": "f61829177362c725613b1b6765be5a7219248d41"
+    },
+    {
+     "path": "partes/mods/reactivemusic-forge-1.3.5+1.20.1.jar.004",
+     "size": 9838232,
+     "sha1": "ded47f4306316c68a61ee668c898975a0e6580de"
+    }
+   ]
   },
   {
    "path": "mods/rrls-4.0.6.1+mc1.20.1-forge.jar",
