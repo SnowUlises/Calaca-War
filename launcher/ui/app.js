@@ -35,10 +35,9 @@ api.onProgress((p) => {
   if (p.phase === 'download') {
     if (!p.count) return;
     estado('Encendiendo velas', `Bajando archivos \u00b7 ${p.done} de ${p.count} \u00b7 ${mb(p.bytes)} de ${mb(p.total)}`);
-    velas(Math.min(7, Math.floor(p.frac * 8 / 0.85 * 0.875)));
+    velas(Math.min(7, Math.floor(p.frac * 8)));
     return;
   }
-  if (p.phase === 'forge') { estado('Encendiendo velas', `${p.text}\u2026`); velas(7); }
 });
 
 async function preparar(repair = false) {
@@ -65,13 +64,32 @@ $('play').addEventListener('click', async () => {
   if (enError) return preparar();
   if (!listo) return;
   boton('JUGAR', false);
-  estado('El trono te espera', 'Abriendo Minecraft\u2026');
+  estado('El trono te espera', 'Preparando\u2026');
   const r = await api.play();
-  if (!r.ok) { estado(r.manual ? 'Abr\u00ed Minecraft' : 'Se apagaron las velas', r.error, r.manual ? 'hot' : 'err'); $('sub').title = r.error; boton('JUGAR', true); return; }
-  const donde = r.modrinth ? 'En Modrinth, eleg\u00ed Calaca War y dale a Jugar' : 'Eleg\u00ed el perfil Calaca War y dale a Jugar';
-  estado('El trono te espera', r.modrinth ? 'Abriendo Modrinth\u2026' : 'Abriendo Minecraft\u2026');
-  setTimeout(() => { estado('El trono te espera', donde); boton('JUGAR', true); }, 4000);
+  if (!r.ok) { estado('Se apagaron las velas', r.error, 'err'); $('sub').title = r.error; boton('JUGAR', true); }
 });
+api.onPlay((p) => {
+  const pct = p.frac ? ` \u00b7 ${Math.round(p.frac * 100)}%` : '';
+  estado(p.abierto ? 'A jugar' : 'Despertando al trono', `${p.text}\u2026${pct}`);
+});
+api.onClosed((c) => {
+  estado('El trono te espera', c.code === 0 ? `Modpack al d\u00eda \u00b7 v${version}` : 'Minecraft se cerr\u00f3 con un error. Mir\u00e1 .calacawar/ultimo-juego.log', c.code === 0 ? 'hot' : 'err');
+  boton('JUGAR', true);
+});
+
+// ---- cuenta
+function pintarCuenta(c) {
+  $('acct').textContent = c ? c.name : 'Sin cuenta (se pide al tocar Jugar)';
+  $('acctBtn').textContent = c ? 'Cambiar' : 'Entrar';
+}
+api.onAccount(pintarCuenta);
+$('acctBtn').addEventListener('click', async () => {
+  $('acctBtn').disabled = true;
+  const r = await api.switchAccount();
+  $('acctBtn').disabled = false;
+  if (r.ok) pintarCuenta(r.cuenta); else $('acct').textContent = r.error;
+});
+api.checkAccount().then(pintarCuenta);
 
 // ---- pestanas
 let noticias = false;
@@ -127,11 +145,7 @@ async function cargarNovedades() {
 // ---- ajustes
 let launcherVer = '';
 function pintarVersion() { $('ver').textContent = `LAUNCHER v${launcherVer}${version ? ` \u00b7 MODPACK v${version}` : ''}`; }
-let viaModrinth = false;
 function pintarAjustes(s) {
-  $('ram').closest('.field').hidden = viaModrinth;
-  $('pick').hidden = viaModrinth;
-  if (viaModrinth) { const d = s.modrinthProfile || 'Se crea al abrir el launcher'; $('dir').textContent = d; $('dir').title = d; $('closeOn').checked = s.closeOnLaunch; return; }
   $('ram').max = s.maxRam; $('ram').value = s.ram;
   $('ramVal').textContent = `${s.ram} GB`; $('ramMax').textContent = `${s.maxRam} GB`;
   $('dir').textContent = s.gameDir; $('dir').title = s.gameDir;
@@ -153,5 +167,5 @@ $('close').addEventListener('click', () => api.close());
 
 velas(0);
 api.onSettings((s) => pintarAjustes(s));
-api.init().then((d) => { launcherVer = d.launcher; viaModrinth = d.modrinth; pintarAjustes(d.settings); pintarVersion(); });
+api.init().then((d) => { launcherVer = d.launcher; pintarAjustes(d.settings); pintarVersion(); });
 api.onStart(() => preparar());

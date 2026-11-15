@@ -1,12 +1,11 @@
 const { app, BrowserWindow, ipcMain, dialog } = require('electron');
 const path = require('path');
 const settings = require('./src/settings');
+const auth = require('./src/auth');
 const { syncPack } = require('./src/sync');
-const { ensureForge, versionId } = require('./src/forge');
-const mc = require('./src/minecraft');
-const { fetchText, fetchJson } = require('./src/net');
-const modrinth = require('./src/modrinth');
-const fs = require('fs');
+const { javaPath } = require('./src/java');
+const { lanzar } = require('./src/game');
+const { fetchText } = require('./src/net');
 
 const REPO = 'SnowUlises/Calaca-War';
 const MANIFEST = `https://raw.githubusercontent.com/${REPO}/main/manifest.json`;
@@ -15,9 +14,10 @@ const NOVEDADES = `https://raw.githubusercontent.com/${REPO}/main/novedades.md`;
 let win = null;
 let pack = null;      // resultado de la ultima sincronizacion
 let ocupado = false;
+let jugando = false;
 
 if (!app.requestSingleInstanceLock()) app.quit();
-app.on('second-instance', () => { if (win) { if (win.isMinimized()) win.restore(); win.focus(); } });
+app.on('second-instance', () => { if (win) { if (win.isMinimized()) win.restore(); win.show(); win.focus(); } });
 
 function send(canal, datos) { if (win && !win.isDestroyed()) win.webContents.send(canal, datos); }
 
@@ -55,33 +55,11 @@ async function preparar(repair) {
   ocupado = true;
   pack = null;
   try {
-    const cfg = settings.get();
-    let gameDir = cfg.gameDir;
-    const viaModrinth = modrinth.instalado();
-    if (viaModrinth) {
-      gameDir = cfg.modrinthProfile && fs.existsSync(cfg.modrinthProfile) ? cfg.modrinthProfile : null;
-      if (!gameDir) {
-        const m = await fetchJson(MANIFEST);
-        gameDir = await modrinth.crearPerfil({
-          minecraft: m.minecraft, forge: m.forge, version: m.version, tmpDir: path.join(app.getPath('userData'), 'mrpack'),
-          onText: (text) => send('progress', { phase: 'forge', frac: 0, text }),
-        });
-        settings.set({ modrinthProfile: gameDir });
-        send('settings', settings.get());
-      }
-    }
     const r = await syncPack({
-      manifestUrl: MANIFEST, gameDir, repair,
-      onProgress: (p) => send('progress', { ...p, frac: p.phase === 'download' && p.total ? 0.85 * (p.bytes / p.total) : 0 }),
+      manifestUrl: MANIFEST, gameDir: settings.get().gameDir, repair,
+      onProgress: (p) => send('progress', { ...p, frac: p.phase === 'download' && p.total ? p.bytes / p.total : 0 }),
     });
-    if (!viaModrinth) {
-      send('progress', { phase: 'forge', frac: 0.88, text: `Revisando Forge ${r.forge}` });
-      await ensureForge({
-        mcDir: mc.mcDir(), dataDir: path.join(app.getPath('userData'), 'forge'), mc: r.minecraft, forge: r.forge,
-        onText: (text) => send('progress', { phase: 'forge', frac: 0.9, text }),
-      });
-    }
-    pack = { ...r, viaModrinth, gameDir };
+    pack = r;
     return { ok: true, version: r.version, forge: r.forge, minecraft: r.minecraft };
   } catch (e) {
     return { ok: false, error: e.message || String(e) };
@@ -90,26 +68,49 @@ async function preparar(repair) {
   }
 }
 
-ipcMain.handle('init', () => ({ settings: settings.get(), launcher: app.getVersion(), modrinth: modrinth.instalado() }));
-ipcMain.handle('prepare', (_e, opts) => preparar(!!(opts && opts.repair)));
-ipcMain.handle('play', async () => {
-  if (!pack) return { ok: false, error: 'El modpack todavia no esta listo.' };
+async function jugar() {
+  if (!pack) return { ok: false, error: 'El modpack todavía no está listo.' };
+  if (jugando) return { ok: false, error: 'Minecraft ya está abierto.' };
+  if (ocupado) return { ok: false, error: 'Ya hay una tarea en curso.' };
+  ocupado = true;
   try {
     const cfg = settings.get();
-    if (pack.viaModrinth && modrinth.abrir()) {
-      if (cfg.closeOnLaunch) setTimeout(() => app.quit(), 8000);
-      return { ok: true, modrinth: true };
-    }
-    mc.cerrarLauncherOficial();
-    mc.writeProfile({ versionId: versionId(pack.minecraft, pack.forge), gameDir: cfg.gameDir, ram: cfg.ram });
-    const r = await mc.openOfficialLauncher();
-    if (!r.ok) return { ok: false, manual: true, error: 'No encontr\u00e9 el launcher de Minecraft. El perfil Calaca War ya est\u00e1 listo: abrilo vos y eleg\u00ed ese perfil.' };
-    if (cfg.closeOnLaunch) setTimeout(() => app.quit(), 2500);
+    send('play', { text: 'Iniciando sesión' });
+    const autorizacion = await auth.sesion();
+    send('account', auth.cuenta());
+    send('play', { text: 'Buscando Java' });
+    const java = await javaPath(path.join(app.getPath('userData'), 'java'), (text) => send('play', { text }));
+    jugando = true;
+    await lanzar({
+      gameDir: cfg.gameDir, minecraft: pack.minecraft, forge: pack.forge, auth: autorizacion, java, ram: cfg.ram,
+      onEstado: (e) => {
+        send('play', e);
+        if (e.abierto && win) win.hide();
+      },
+      onCerrado: (code) => {
+        jugando = false;
+        if (settings.get().closeOnLaunch && code === 0) return app.quit();
+        if (win) { win.show(); win.focus(); }
+        send('closed', { code });
+      },
+    });
     return { ok: true };
   } catch (e) {
+    jugando = false;
     return { ok: false, error: e.message || String(e) };
+  } finally {
+    ocupado = false;
   }
+}
+
+ipcMain.handle('init', () => ({ settings: settings.get(), launcher: app.getVersion() }));
+ipcMain.handle('prepare', (_e, opts) => preparar(!!(opts && opts.repair)));
+ipcMain.handle('play', () => jugar());
+ipcMain.handle('account:check', () => auth.revisar());
+ipcMain.handle('account:switch', async () => {
+  try { await auth.sesion({ forzarLogin: true }); return { ok: true, cuenta: auth.cuenta() }; } catch (e) { return { ok: false, error: e.message }; }
 });
+ipcMain.handle('account:logout', () => { auth.salir(); return null; });
 ipcMain.handle('settings:set', (_e, cambios) => settings.set(cambios || {}));
 ipcMain.handle('settings:pickDir', async () => {
   const r = await dialog.showOpenDialog(win, { title: 'Carpeta del juego', properties: ['openDirectory', 'createDirectory'], defaultPath: settings.get().gameDir });
@@ -121,10 +122,11 @@ ipcMain.on('win:close', () => app.quit());
 
 app.whenReady().then(async () => {
   settings.init(app.getPath('userData'));
+  auth.init(app.getPath('userData'));
   crearVentana();
   win.webContents.once('did-finish-load', async () => {
     await actualizarLauncher();
     send('start');
   });
 });
-app.on('window-all-closed', () => app.quit());
+app.on('window-all-closed', () => { if (!jugando) app.quit(); });
