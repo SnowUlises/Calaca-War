@@ -1,23 +1,22 @@
 const $ = (id) => document.getElementById(id);
 const api = window.launcher;
-const PIP = '<svg class="pip" viewBox="0 0 28 44"><g class="fl"><polygon points="14,1 19,11 14,18 9,11" fill="#FF9B2F"/><polygon points="14,7 16.5,12 14,16 11.5,12" fill="#FFE9A8"/></g><rect x="13" y="17" width="2" height="4" fill="#221E19"/><rect class="body" x="9" y="21" width="10" height="17"/><rect class="shade" x="16" y="21" width="3" height="17"/><rect class="hold" x="5" y="38" width="18" height="4"/></svg>';
+const ALTOS = [22, 30, 26, 34, 34, 26, 30, 22];
+const vela = (h) => `<svg class="vela" width="18" height="${h + 14}" viewBox="0 0 18 ${h + 14}" shape-rendering="crispEdges"><g class="fl"><rect x="7" y="0" width="4" height="4" fill="#FF4A2A"/><rect x="6" y="4" width="6" height="6" fill="#FF4A2A"/><rect x="8" y="5" width="2" height="5" fill="#FFC27A"/></g><rect x="8" y="10" width="2" height="3" fill="#1A1416"/><rect class="cuerpo" x="5" y="13" width="8" height="${h}"/><rect class="sombra" x="10" y="13" width="3" height="${h}"/></svg>`;
 
 let listo = false;
 let enError = false;
 let version = '';
 
 // ---- velas y escena
-$('tray').innerHTML = PIP.repeat(8);
-$('scene').innerHTML = Array.from({ length: 9 }, (_, i) => `<img src="scenes/${i}.svg" alt="" data-n="${i}">`).join('');
+$('tray').innerHTML = ALTOS.map(vela).join('');
 function velas(n) {
   n = Math.max(0, Math.min(8, n));
   [...$('tray').children].forEach((p, i) => p.classList.toggle('lit', i < n));
-  [...$('scene').children].forEach((img, i) => img.classList.toggle('on', i === n));
-  $('count').textContent = `${n} / 8`;
+  $('count').textContent = n ? `${n} de 8` : '';
   if (window.fx) window.fx.velas(n);
   $('tray').setAttribute('aria-label', `${n} de 8 velas encendidas`);
 }
-function estado(titulo, sub, clase = 'gold') {
+function estado(titulo, sub, clase = 'hot') {
   $('status').textContent = titulo;
   $('status').className = clase;
   $('sub').textContent = sub || '\u00a0';
@@ -31,32 +30,32 @@ const mb = (b) => `${Math.round(b / 1e6)} MB`;
 
 // ---- preparar el modpack
 api.onProgress((p) => {
-  if (p.phase === 'selfupdate') { estado('NUEVO LAUNCHER', 'Actualizando el launcher\u2026'); return; }
-  if (p.phase === 'check') { estado('BUSCANDO NOVEDADES', 'Revisando el modpack\u2026'); return; }
+  if (p.phase === 'selfupdate') { estado('Nuevo launcher', 'Actualizando el launcher\u2026'); return; }
+  if (p.phase === 'check') { estado('Buscando novedades', 'Revisando el modpack\u2026'); return; }
   if (p.phase === 'download') {
     if (!p.count) return;
-    estado('ENCENDIENDO VELAS', `Bajando archivos \u00b7 ${p.done} de ${p.count} \u00b7 ${mb(p.bytes)} de ${mb(p.total)}`);
+    estado('Encendiendo velas', `Bajando archivos \u00b7 ${p.done} de ${p.count} \u00b7 ${mb(p.bytes)} de ${mb(p.total)}`);
     velas(Math.min(7, Math.floor(p.frac * 8 / 0.85 * 0.875)));
     return;
   }
-  if (p.phase === 'forge') { estado('ENCENDIENDO VELAS', `${p.text}\u2026`); velas(7); }
+  if (p.phase === 'forge') { estado('Encendiendo velas', `${p.text}\u2026`); velas(7); }
 });
 
 async function preparar(repair = false) {
   listo = false; enError = false;
   boton('JUGAR', false);
   velas(0);
-  estado('BUSCANDO NOVEDADES', 'Revisando el modpack\u2026');
+  estado('Buscando novedades', 'Revisando el modpack\u2026');
   const r = await api.prepare({ repair });
   if (r.ok) {
     listo = true; version = r.version;
     velas(8);
-    estado('EL TRONO ESPERA', `Modpack al d\u00eda \u00b7 v${r.version}`);
+    estado('El trono te espera', `Modpack al d\u00eda \u00b7 v${r.version}`);
     boton('JUGAR', true);
     pintarVersion();
   } else {
     enError = true;
-    estado('SE APAGARON LAS VELAS', r.error, 'err');
+    estado('Se apagaron las velas', r.error, 'err');
     $('sub').title = r.error;
     boton('REINTENTAR', true);
   }
@@ -66,10 +65,10 @@ $('play').addEventListener('click', async () => {
   if (enError) return preparar();
   if (!listo) return;
   boton('JUGAR', false);
-  estado('EL TRONO ESPERA', 'Abriendo Minecraft\u2026');
+  estado('El trono te espera', 'Abriendo Minecraft\u2026');
   const r = await api.play();
-  if (!r.ok) { estado(r.manual ? 'ABR\u00cd MINECRAFT' : 'SE APAGARON LAS VELAS', r.error, r.manual ? 'gold' : 'err'); $('sub').title = r.error; boton('JUGAR', true); return; }
-  setTimeout(() => { estado('EL TRONO ESPERA', 'Eleg\u00ed el perfil Calaca War y dale a Jugar'); boton('JUGAR', true); }, 6000);
+  if (!r.ok) { estado(r.manual ? 'Abr\u00ed Minecraft' : 'Se apagaron las velas', r.error, r.manual ? 'hot' : 'err'); $('sub').title = r.error; boton('JUGAR', true); return; }
+  setTimeout(() => { estado('El trono te espera', 'Eleg\u00ed el perfil Calaca War y dale a Jugar'); boton('JUGAR', true); }, 6000);
 });
 
 // ---- pestanas
@@ -85,7 +84,7 @@ function ir(tab) {
 }
 
 // ---- novedades (novedades.md del repo)
-const COLOR = { nuevo: 'var(--gold)', cambios: 'var(--alma)', arreglos: 'var(--red)' };
+const COLOR = { nuevo: 'var(--hot)', cambios: '#C9BFB2', arreglos: '#E0A050' };
 function parsear(md) {
   const vers = [];
   let v = null; let s = null;
@@ -109,7 +108,7 @@ async function cargarNovedades() {
     const [num, ...resto] = v.titulo.split(/\s+[\u2014-]\s+/);
     const card = el('section', i ? 'rel old' : 'rel');
     const head = el('div', 'row');
-    head.append(el('span', 'head', i ? resto.join(' ') : `\u00daLTIMA VERSI\u00d3N${resto.length ? ` \u00b7 ${resto.join(' ')}` : ''}`), el('span', 'chip', `v${num}`));
+    head.append(el('span', 'head2', i ? resto.join(' ') : `\u00daLTIMA VERSI\u00d3N${resto.length ? ` \u00b7 ${resto.join(' ')}` : ''}`), el('span', 'chip', `v${num}`));
     card.append(head);
     for (const s of v.secciones) {
       const d = el('div');
