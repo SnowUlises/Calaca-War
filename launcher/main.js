@@ -4,7 +4,9 @@ const settings = require('./src/settings');
 const { syncPack } = require('./src/sync');
 const { ensureForge, versionId } = require('./src/forge');
 const mc = require('./src/minecraft');
-const { fetchText } = require('./src/net');
+const { fetchText, fetchJson } = require('./src/net');
+const modrinth = require('./src/modrinth');
+const fs = require('fs');
 
 const REPO = 'SnowUlises/Calaca-War';
 const MANIFEST = `https://raw.githubusercontent.com/${REPO}/main/manifest.json`;
@@ -54,16 +56,32 @@ async function preparar(repair) {
   pack = null;
   try {
     const cfg = settings.get();
+    let gameDir = cfg.gameDir;
+    const viaModrinth = modrinth.instalado();
+    if (viaModrinth) {
+      gameDir = cfg.modrinthProfile && fs.existsSync(cfg.modrinthProfile) ? cfg.modrinthProfile : null;
+      if (!gameDir) {
+        const m = await fetchJson(MANIFEST);
+        gameDir = await modrinth.crearPerfil({
+          minecraft: m.minecraft, forge: m.forge, version: m.version, tmpDir: path.join(app.getPath('userData'), 'mrpack'),
+          onText: (text) => send('progress', { phase: 'forge', frac: 0, text }),
+        });
+        settings.set({ modrinthProfile: gameDir });
+        send('settings', settings.get());
+      }
+    }
     const r = await syncPack({
-      manifestUrl: MANIFEST, gameDir: cfg.gameDir, repair,
+      manifestUrl: MANIFEST, gameDir, repair,
       onProgress: (p) => send('progress', { ...p, frac: p.phase === 'download' && p.total ? 0.85 * (p.bytes / p.total) : 0 }),
     });
-    send('progress', { phase: 'forge', frac: 0.88, text: `Revisando Forge ${r.forge}` });
-    await ensureForge({
-      mcDir: mc.mcDir(), dataDir: path.join(app.getPath('userData'), 'forge'), mc: r.minecraft, forge: r.forge,
-      onText: (text) => send('progress', { phase: 'forge', frac: 0.9, text }),
-    });
-    pack = r;
+    if (!viaModrinth) {
+      send('progress', { phase: 'forge', frac: 0.88, text: `Revisando Forge ${r.forge}` });
+      await ensureForge({
+        mcDir: mc.mcDir(), dataDir: path.join(app.getPath('userData'), 'forge'), mc: r.minecraft, forge: r.forge,
+        onText: (text) => send('progress', { phase: 'forge', frac: 0.9, text }),
+      });
+    }
+    pack = { ...r, viaModrinth, gameDir };
     return { ok: true, version: r.version, forge: r.forge, minecraft: r.minecraft };
   } catch (e) {
     return { ok: false, error: e.message || String(e) };
@@ -72,12 +90,16 @@ async function preparar(repair) {
   }
 }
 
-ipcMain.handle('init', () => ({ settings: settings.get(), launcher: app.getVersion() }));
+ipcMain.handle('init', () => ({ settings: settings.get(), launcher: app.getVersion(), modrinth: modrinth.instalado() }));
 ipcMain.handle('prepare', (_e, opts) => preparar(!!(opts && opts.repair)));
 ipcMain.handle('play', async () => {
   if (!pack) return { ok: false, error: 'El modpack todavia no esta listo.' };
   try {
     const cfg = settings.get();
+    if (pack.viaModrinth && modrinth.abrir()) {
+      if (cfg.closeOnLaunch) setTimeout(() => app.quit(), 8000);
+      return { ok: true, modrinth: true };
+    }
     mc.cerrarLauncherOficial();
     mc.writeProfile({ versionId: versionId(pack.minecraft, pack.forge), gameDir: cfg.gameDir, ram: cfg.ram });
     const r = await mc.openOfficialLauncher();

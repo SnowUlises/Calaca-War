@@ -68,7 +68,9 @@ $('play').addEventListener('click', async () => {
   estado('El trono te espera', 'Abriendo Minecraft\u2026');
   const r = await api.play();
   if (!r.ok) { estado(r.manual ? 'Abr\u00ed Minecraft' : 'Se apagaron las velas', r.error, r.manual ? 'hot' : 'err'); $('sub').title = r.error; boton('JUGAR', true); return; }
-  setTimeout(() => { estado('El trono te espera', 'Eleg\u00ed el perfil Calaca War y dale a Jugar'); boton('JUGAR', true); }, 6000);
+  const donde = r.modrinth ? 'En Modrinth, eleg\u00ed Calaca War y dale a Jugar' : 'Eleg\u00ed el perfil Calaca War y dale a Jugar';
+  estado('El trono te espera', r.modrinth ? 'Abriendo Modrinth\u2026' : 'Abriendo Minecraft\u2026');
+  setTimeout(() => { estado('El trono te espera', donde); boton('JUGAR', true); }, 4000);
 });
 
 // ---- pestanas
@@ -125,7 +127,11 @@ async function cargarNovedades() {
 // ---- ajustes
 let launcherVer = '';
 function pintarVersion() { $('ver').textContent = `LAUNCHER v${launcherVer}${version ? ` \u00b7 MODPACK v${version}` : ''}`; }
+let viaModrinth = false;
 function pintarAjustes(s) {
+  $('ram').closest('.field').hidden = viaModrinth;
+  $('pick').hidden = viaModrinth;
+  if (viaModrinth) { const d = s.modrinthProfile || 'Se crea al abrir el launcher'; $('dir').textContent = d; $('dir').title = d; $('closeOn').checked = s.closeOnLaunch; return; }
   $('ram').max = s.maxRam; $('ram').value = s.ram;
   $('ramVal').textContent = `${s.ram} GB`; $('ramMax').textContent = `${s.maxRam} GB`;
   $('dir').textContent = s.gameDir; $('dir').title = s.gameDir;
@@ -146,5 +152,6 @@ $('min').addEventListener('click', () => api.minimize());
 $('close').addEventListener('click', () => api.close());
 
 velas(0);
-api.init().then((d) => { launcherVer = d.launcher; pintarAjustes(d.settings); pintarVersion(); });
+api.onSettings((s) => pintarAjustes(s));
+api.init().then((d) => { launcherVer = d.launcher; viaModrinth = d.modrinth; pintarAjustes(d.settings); pintarVersion(); });
 api.onStart(() => preparar());

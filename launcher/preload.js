@@ -10,5 +10,6 @@ contextBridge.exposeInMainWorld('launcher', {
   minimize: () => ipcRenderer.send('win:min'),
   close: () => ipcRenderer.send('win:close'),
   onProgress: (fn) => ipcRenderer.on('progress', (_e, p) => fn(p)),
+  onSettings: (fn) => ipcRenderer.on('settings', (_e, s) => fn(s)),
   onStart: (fn) => ipcRenderer.on('start', () => fn()),
 });

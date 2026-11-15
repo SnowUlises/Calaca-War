@@ -25,6 +25,7 @@ function set(cambios) {
   const maxRam = get().maxRam;
   if (cambios.ram !== undefined) cache.ram = Math.min(maxRam, Math.max(2, Math.round(Number(cambios.ram)) || 4));
   if (typeof cambios.gameDir === 'string' && cambios.gameDir) cache.gameDir = cambios.gameDir;
+  if (typeof cambios.modrinthProfile === 'string') cache.modrinthProfile = cambios.modrinthProfile;
   if (cambios.closeOnLaunch !== undefined) cache.closeOnLaunch = !!cambios.closeOnLaunch;
   fs.mkdirSync(path.dirname(file), { recursive: true });
   fs.writeFileSync(file, JSON.stringify(cache, null, 2));
