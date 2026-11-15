@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'">
+<title>Calaca War</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="bar"><span>LAUNCHER</span>
+  <div class="wbtn">
+    <button id="min" aria-label="Minimizar"><svg viewBox="0 0 24 24"><path d="M6 12h12"/></svg></button>
+    <button id="close" aria-label="Cerrar"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+  </div>
+</div>
+<h1 class="title">Calaca War</h1>
+<img class="garland" src="garland.svg" alt="">
+
+<div class="scene" id="scene" aria-hidden="true"></div>
+
+<main class="content" id="v-news" hidden>
+  <div id="news"></div>
+</main>
+
+<main class="content" id="v-settings" hidden>
+  <div class="field">
+    <div class="row"><label class="lab" for="ram">MEMORIA</label><span class="val" id="ramVal">6 GB</span></div>
+    <input id="ram" type="range" min="2" max="16" step="1" value="6">
+    <div class="row hint"><span>2 GB</span><span>Recomendado: 6 a 8 GB</span><span id="ramMax">16 GB</span></div>
+  </div>
+  <div class="field">
+    <span class="lab">CARPETA DEL JUEGO</span>
+    <div class="row gap"><div class="path" id="dir"></div><button class="ghost" id="pick">CAMBIAR</button></div>
+  </div>
+  <div class="field">
+    <label class="check"><input type="checkbox" id="closeOn">Cerrar el launcher al abrir Minecraft</label>
+  </div>
+  <div class="field last">
+    <span class="lab">REPARAR INSTALACI&Oacute;N</span>
+    <div class="row gap"><p>Vuelve a bajar mods y configs. No toca tus opciones ni tus mundos.</p><button class="ghost" id="repair">REPARAR</button></div>
+  </div>
+  <div class="foot" id="ver"></div>
+</main>
+
+<div class="dock">
+  <div class="status" id="statusBlock">
+    <div class="row sil"><span id="status" class="gold">BUSCANDO NOVEDADES</span><span id="count">0 / 8</span></div>
+    <div class="tray" id="tray" role="img" aria-label="0 de 8 velas encendidas"></div>
+    <div class="sub" id="sub">&nbsp;</div>
+  </div>
+  <button class="play" id="play" disabled><svg viewBox="0 0 24 24"><path d="M7 5l12 7-12 7z"/></svg><span id="playTxt">JUGAR</span></button>
+  <nav class="tabs">
+    <button data-tab="home" class="on"><svg viewBox="0 0 24 24"><path d="M4 11l8-7 8 7v9h-5v-6h-6v6H4z"/></svg>INICIO</button>
+    <button data-tab="news"><svg viewBox="0 0 24 24"><path d="M5 4h14v16H5zM8 8h8M8 12h8M8 16h5"/></svg>NOVEDADES</button>
+    <button data-tab="settings"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3.2"/><path d="M12 2.5v3M12 18.5v3M2.5 12h3M18.5 12h3M5.3 5.3l2.1 2.1M16.6 16.6l2.1 2.1M5.3 18.7l2.1-2.1M16.6 7.4l2.1-2.1"/></svg>AJUSTES</button>
+  </nav>
+</div>
+<script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+{
+  "name": "calaca-war-launcher",
+  "version": "0.1.0",
+  "description": "Launcher del modpack Calaca War",
+  "author": "SnowUlises",
+  "private": true,
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder --win nsis --x64 --publish never",
+    "release": "electron-builder --win nsis --x64 --publish always"
+  },
+  "dependencies": {
+    "@fontsource/inter": "^5.1.0",
+    "@fontsource/jacquard-24": "^5.1.0",
+    "@fontsource/silkscreen": "^5.1.0",
+    "adm-zip": "^0.5.16",
+    "electron-updater": "^6.3.9"
+  },
+  "devDependencies": {
+    "electron": "^33.2.0",
+    "electron-builder": "^25.1.8"
+  },
+  "build": {
+    "appId": "com.calacawar.launcher",
+    "productName": "Calaca War Launcher",
+    "directories": { "output": "dist" },
+    "files": ["main.js", "preload.js", "src/**", "ui/**", "package.json"],
+    "win": { "target": [{ "target": "nsis", "arch": ["x64"] }], "icon": "build/icon.png" },
+    "nsis": {
+      "oneClick": true,
+      "perMachine": false,
+      "createDesktopShortcut": true,
+      "shortcutName": "Calaca War",
+      "artifactName": "CalacaWarLauncher-Setup.exe"
+    },
+    "publish": [{ "provider": "github", "owner": "SnowUlises", "repo": "Calaca-War", "releaseType": "release" }]
+  }
+}
