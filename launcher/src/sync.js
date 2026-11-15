@@ -7,6 +7,7 @@
 // - Nada fuera de esas carpetas se toca (options.txt, saves, screenshots, etc.).
 const fs = require('fs');
 const path = require('path');
+const { pipeline } = require('stream/promises');
 const { fetchJson, download, sha1File } = require('./net');
 
 const CARPETAS = ['mods', 'config', 'shaderpacks', 'resourcepacks', 'datapacks'];
@@ -28,6 +29,16 @@ function leerEstado(file) {
 
 async function tamano(file) {
   try { return (await fs.promises.stat(file)).size; } catch { return -1; }
+}
+
+// Restos de descargas cortadas o de versiones viejas del launcher.
+async function limpiar(gameDir) {
+  await fs.promises.rm(path.join(gameDir, '.calacawar', 'partes'), { recursive: true, force: true });
+  for (const c of BORRABLES) {
+    let items = [];
+    try { items = await fs.promises.readdir(path.join(gameDir, c)); } catch { continue; }
+    for (const n of items) if (n.endsWith('.part')) await fs.promises.rm(path.join(gameDir, c, n), { force: true });
+  }
 }
 
 async function syncPack({ manifestUrl, gameDir, repair = false, onProgress = () => {} }) {
@@ -71,20 +82,20 @@ async function syncPack({ manifestUrl, gameDir, repair = false, onProgress = () 
   async function bajarUno(a) {
     const dest = path.join(gameDir, a.path);
     if (a.parts) {
-      const piezas = [];
-      for (const p of a.parts) {
-        const tmp = path.join(gameDir, '.calacawar', 'partes', path.basename(p.path));
-        await download(manifest.base_url + enc(p.path), tmp, { sha1: p.sha1, onBytes });
-        piezas.push(tmp);
-      }
+      // Se baja pieza por pieza (verificando cada una) y se va pegando en un solo archivo.
       const armado = `${dest}.part`;
+      const tmp = path.join(gameDir, '.calacawar', 'partes', 'pieza');
       await fs.promises.mkdir(path.dirname(dest), { recursive: true });
       await fs.promises.rm(armado, { force: true });
-      for (const p of piezas) await fs.promises.appendFile(armado, await fs.promises.readFile(p));
-      if ((await sha1File(armado)) !== a.sha1) throw new Error(`No se pudo armar ${path.basename(dest)}`);
+      for (const p of a.parts) {
+        await download(manifest.base_url + enc(p.path), tmp, { sha1: p.sha1, onBytes });
+        await pipeline(fs.createReadStream(tmp), fs.createWriteStream(armado, { flags: 'a' }));
+        await fs.promises.rm(tmp, { force: true });
+      }
+      const real = await sha1File(armado);
+      if (real !== a.sha1) throw new Error(`No se pudo armar ${path.basename(dest)} (${real.slice(0, 8)} en vez de ${a.sha1.slice(0, 8)})`);
       await fs.promises.rm(dest, { force: true });
       await fs.promises.rename(armado, dest);
-      for (const p of piezas) await fs.promises.rm(p, { force: true });
     } else {
       await download(a.url || manifest.base_url + enc(a.path), dest, { sha1: a.sha1, onBytes });
     }
@@ -102,6 +113,7 @@ async function syncPack({ manifestUrl, gameDir, repair = false, onProgress = () 
     }
   }));
   await guardar();
+  await limpiar(gameDir);
   if (fallo) throw fallo;
   return { version: manifest.version, minecraft: manifest.minecraft, forge: manifest.forge, novedades: manifest.novedades, bajados: pendientes.length };
 }

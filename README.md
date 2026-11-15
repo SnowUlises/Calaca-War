@@ -9,12 +9,11 @@ Archivos del modpack de **Calaca War** (Minecraft Forge 1.20.1 · 47.4.0). El la
 | `mods/` | Los mods del pack. |
 | `config/` | Configuración de los mods. |
 | `shaderpacks/` | Shaders incluidos. |
-| `partes/` | Archivos de más de 100 MB, partidos en pedazos (GitHub no los acepta enteros). El launcher los rearma. |
-| `pack.json` | Nombre, versión, Minecraft y Forge. |
+| `pack.json` | Nombre, versión, Minecraft, Forge y `externos`: archivos de más de 100 MB que se bajan de Modrinth (GitHub no los acepta). |
 | `novedades.md` | Lo que muestra el launcher en Novedades. La versión más nueva va arriba. |
 | `manifest.json` | Lista de todos los archivos con tamaño y sha1. Es lo que lee el launcher. **Se genera solo**, no editarlo a mano. |
 | `launcher/` | Código del launcher (Electron). Cada cambio subido a `main` lo compila y publica solo como release. |
-| `tools/build_manifest.py` | Genera `manifest.json` y parte los archivos de más de 100 MB. |
+| `tools/build_manifest.py` | Genera `manifest.json`. Si hay un archivo de más de 100 MB lo busca en Modrinth y lo pasa a `externos`; si no está, lo parte en `partes/`. |
 
 ## Publicar una versión nueva
 

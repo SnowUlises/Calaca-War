@@ -4,11 +4,12 @@
 Uso:  python tools/build_manifest.py
 Correrlo desde la raiz del repo cada vez que cambien mods, configs o shaders.
 
-GitHub no acepta archivos de mas de 100 MB. Si encuentra uno, este script lo
-parte en pedazos dentro de partes/ (misma ruta + .001, .002, ...) y lo saca de
-su carpeta. El launcher baja los pedazos y lo vuelve a armar.
+GitHub no acepta archivos de mas de 100 MB. Si encuentra uno:
+1. Lo busca en Modrinth por su sha1. Si esta, lo anota en "externos" de pack.json
+   (el launcher lo baja directo de Modrinth) y lo saca del repo.
+2. Si no esta en Modrinth, lo parte en pedazos dentro de partes/ y el launcher lo rearma.
 """
-import hashlib, json, os, re
+import hashlib, json, os, re, urllib.request
 
 RAIZ = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 CARPETAS = ["mods", "config", "shaderpacks", "resourcepacks", "datapacks"]
@@ -38,6 +39,19 @@ def recorrer(base):
             yield os.path.join(dirpath, n)
 
 
+def en_modrinth(completo, hash_):
+    try:
+        req = urllib.request.Request(f"https://api.modrinth.com/v2/version_file/{hash_}?algorithm=sha1",
+                                     headers={"User-Agent": "SnowUlises/Calaca-War build_manifest"})
+        data = json.load(urllib.request.urlopen(req, timeout=20))
+    except Exception:
+        return None
+    for f in data.get("files", []):
+        if f.get("hashes", {}).get("sha1") == hash_:
+            return f["url"]
+    return None
+
+
 def partir(completo):
     destino = os.path.join(RAIZ, PARTES, rel(completo))
     os.makedirs(os.path.dirname(destino), exist_ok=True)
@@ -57,7 +71,16 @@ archivos = []
 for carpeta in CARPETAS:
     for completo in list(recorrer(os.path.join(RAIZ, carpeta))):
         if os.path.getsize(completo) > LIMITE:
-            partir(completo)
+            h = sha1([completo])
+            url = en_modrinth(completo, h)
+            if url:
+                externos = [e for e in PACK.setdefault("externos", []) if e["path"] != rel(completo)]
+                externos.append({"path": rel(completo), "size": os.path.getsize(completo), "sha1": h, "url": url})
+                PACK["externos"] = externos
+                os.remove(completo)
+                print(f"a Modrinth: {rel(completo)}")
+            else:
+                partir(completo)
             continue
         archivos.append({"path": rel(completo), "size": os.path.getsize(completo), "sha1": sha1([completo])})
 
@@ -74,6 +97,10 @@ for base, piezas in grupos.items():
         "sha1": sha1(piezas),
         "parts": [{"path": rel(p), "size": os.path.getsize(p), "sha1": sha1([p])} for p in piezas],
     })
+
+for ext in PACK.get("externos", []):
+    archivos.append(dict(ext))
+json.dump(PACK, open(os.path.join(RAIZ, "pack.json"), "w", encoding="utf-8"), ensure_ascii=False, indent=1)
 
 archivos.sort(key=lambda a: a["path"])
 manifest = {
