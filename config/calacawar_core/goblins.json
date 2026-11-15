@@ -1,0 +1,20 @@
+{
+  "merchant": {
+    "goblins_tyranny:bomb_bag": 5,
+    "goblins_tyranny:engineer_scrap": 2
+  },
+  "merchant_hides_a": {
+    "goblins_tyranny:goat_hide": 2,
+    "goblins_tyranny:cow_hide": 2
+  },
+  "merchant_hides_b": {
+    "goblins_tyranny:bear_hide": 2,
+    "goblins_tyranny:wolf_hide": 2
+  },
+  "bartender": {
+    "goblins_tyranny:mug": 3,
+    "goblins_tyranny:blazing_liquor_item": 5,
+    "goblins_tyranny:deadly_liquor_item": 5
+  },
+  "wanderer": 1
+}

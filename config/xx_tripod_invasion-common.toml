@@ -1,0 +1,33 @@
+
+#Xiaoxiang's Tripod Invasion — 共用設定
+[general]
+	#每5秒記錄機體狀態與tick耗時至logs/tripod-diagnostics.jsonl，輪替上限約4MB。
+	debugLogging = false
+
+[invasion]
+	enabled = true
+	#Legacy setting; invasion regions now always use 500 blocks.
+	#Range: 64 ~ 4096
+	regionSize = 500
+	#Legacy setting; each region now always permits at most one lifetime birth.
+	#Range: 1 ~ 8
+	regionQuota = 1
+	#Range: 0.0 ~ 1.0
+	regionChance = 0.75
+	#Range: 1 ~ 128
+	loadedTripodLimit = 24
+
+[shield]
+	enabled = true
+
+[combat]
+	heatRayEnabled = true
+	cageVariantCaptureFirst = true
+	#Range: 24.0 ~ 192.0
+	heatRayRange = 96.0
+
+[audio]
+	#Tripod effects gain; 0 disables all custom effects. Also respects the Hostile Creatures volume slider.
+	#Range: 0.0 ~ 2.0
+	volume = 1.0
+

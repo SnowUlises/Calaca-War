@@ -1,0 +1,19 @@
+{
+  "version": 2,
+  "attempts": 3,
+  "hits": 3,
+  "wildcardBlocks": 3,
+  "sealMinutes": 20,
+  "expelDebuffSeconds": 8,
+  "hitCooldownTicks": 16,
+  "snowballEverySeconds": 2.5,
+  "snowballWarnSeconds": 0.75,
+  "snowballPush": 1.25,
+  "turretEverySeconds": 3.0,
+  "turretWarnSeconds": 0.6,
+  "pendulumPeriodSeconds": 3.0,
+  "windStrength": 0.045,
+  "sensorCooldownSeconds": 1.5,
+  "levitationTicks": 30,
+  "colossusKnockback": 2.5
+}

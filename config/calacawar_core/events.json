@@ -1,0 +1,114 @@
+{
+  "_info": "Eventos de Calaca War (por ahora solo texto) y sets: en qué minuto de la partida cae cada uno. Se edita desde el Editor de partida.",
+  "events": [
+    {
+      "id": "reparto",
+      "name": "Reparto de Esencia",
+      "text": "SrLlama derrama Esencia sobre el mapa."
+    },
+    {
+      "id": "luna",
+      "name": "Luna de sangre",
+      "text": "La luna se tiñe de rojo. Esta noche nadie duerme."
+    },
+    {
+      "id": "mercado",
+      "name": "Mercado negro",
+      "text": "Don Llamón trae stock especial por una hora."
+    },
+    {
+      "id": "niebla",
+      "name": "Niebla de SrLlama",
+      "text": "Una niebla espesa cubre todo. Ojo con quién te cruzás."
+    },
+    {
+      "id": "silencio",
+      "name": "Silencio",
+      "text": "Las alarmas callan durante 10 minutos."
+    },
+    {
+      "id": "borde",
+      "name": "Cierre del borde",
+      "text": "El mundo empieza a encogerse. Todos al centro."
+    },
+    {
+      "id": "juicio",
+      "name": "Juicio final",
+      "text": "Deathmatch. Que quede uno solo."
+    }
+  ],
+  "sets": [
+    {
+      "id": "clasica",
+      "name": "Clásica 8 h",
+      "entries": [
+        {
+          "uid": 283784289,
+          "minute": 30,
+          "event": "reparto"
+        },
+        {
+          "uid": 1832573218,
+          "minute": 90,
+          "event": "luna"
+        },
+        {
+          "uid": 120601506,
+          "minute": 150,
+          "event": "mercado"
+        },
+        {
+          "uid": 1969323583,
+          "minute": 210,
+          "event": "niebla"
+        },
+        {
+          "uid": 1994320915,
+          "minute": 300,
+          "event": "silencio"
+        },
+        {
+          "uid": 178390660,
+          "minute": 420,
+          "event": "borde"
+        },
+        {
+          "uid": 654849867,
+          "minute": 480,
+          "event": "juicio"
+        }
+      ]
+    },
+    {
+      "id": "relampago",
+      "name": "Relámpago 4 h",
+      "entries": [
+        {
+          "uid": 1038483911,
+          "minute": 15,
+          "event": "reparto"
+        },
+        {
+          "uid": 689117759,
+          "minute": 60,
+          "event": "mercado"
+        },
+        {
+          "uid": 644048859,
+          "minute": 120,
+          "event": "luna"
+        },
+        {
+          "uid": 39754038,
+          "minute": 180,
+          "event": "borde"
+        },
+        {
+          "uid": 190609690,
+          "minute": 240,
+          "event": "juicio"
+        }
+      ]
+    }
+  ]
+}

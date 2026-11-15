@@ -1,0 +1,19 @@
+{
+  "name": "Test 1",
+  "minDistance": 150,
+  "modified": 1791696961006,
+  "entries": [
+    {
+      "id": "minecraft:mansion",
+      "count": 4
+    },
+    {
+      "id": "minecraft:shipwreck",
+      "count": 4
+    },
+    {
+      "id": "minecraft:ruined_portal_jungle",
+      "count": 10
+    }
+  ]
+}

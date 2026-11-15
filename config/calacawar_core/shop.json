@@ -1,0 +1,113 @@
+{
+  "_info": "Ofertas de Don Llamón. Cada 4 h reales se eligen 6 al azar. stock = cuántas puede comprar cada jugador por rotación. Recargar con /cw shop reload.",
+  "offers": [
+    {
+      "item": "minecraft:diamond_sword",
+      "nbt": "{display:{Name:'{\"text\":\"Hoja carmesí\",\"italic\":false,\"color\":\"red\"}'},Enchantments:[{id:\"minecraft:sharpness\",lvl:1s}]}",
+      "name": "Hoja carmesí",
+      "price": 40,
+      "stock": 1,
+      "line": "Corta como el primer día de guerra. Y el segundo también."
+    },
+    {
+      "item": "minecraft:potion",
+      "nbt": "{Potion:\"minecraft:strength\"}",
+      "name": "Tónico de guerra",
+      "price": 15,
+      "stock": 3,
+      "line": "Dos tragos y te olvidás de quién te pegó."
+    },
+    {
+      "item": "minecraft:golden_apple",
+      "name": "Manzana dorada",
+      "price": 30,
+      "stock": 2,
+      "line": "Cosecha de este año. Bah, de esta hora."
+    },
+    {
+      "item": "minecraft:ender_pearl",
+      "count": 2,
+      "name": "Perla del vacío",
+      "price": 25,
+      "stock": 2,
+      "line": "La tirás y aparecés donde cayó. Sin devoluciones."
+    },
+    {
+      "item": "minecraft:bow",
+      "nbt": "{Enchantments:[{id:\"minecraft:power\",lvl:1s}]}",
+      "name": "Arco de hueso",
+      "price": 35,
+      "stock": 1,
+      "line": "Lo hizo un cliente que ya no viene más."
+    },
+    {
+      "item": "minecraft:totem_of_undying",
+      "name": "Tótem calaca",
+      "price": 90,
+      "stock": 1,
+      "line": "Te salva una vez. Una sola, ¿eh?"
+    },
+    {
+      "item": "minecraft:bread",
+      "count": 8,
+      "name": "Pan de campaña",
+      "price": 5,
+      "stock": 4,
+      "line": "Duro como la cabeza de tu enemigo. Pero llena."
+    },
+    {
+      "item": "minecraft:arrow",
+      "count": 16,
+      "name": "Flechas usadas",
+      "price": 10,
+      "stock": 3,
+      "line": "Las junté del campo de batalla. Algunas todavía tienen dueño."
+    },
+    {
+      "item": "minecraft:iron_chestplate",
+      "name": "Coraza de hierro",
+      "price": 30,
+      "stock": 1,
+      "line": "Tiene un agujero. Del lado de atrás, así que tranqui."
+    },
+    {
+      "item": "minecraft:shield",
+      "name": "Escudo abollado",
+      "price": 20,
+      "stock": 2,
+      "line": "Lo dejó un cliente. Bueno, lo dejó tirado."
+    },
+    {
+      "item": "minecraft:potion",
+      "nbt": "{Potion:\"minecraft:healing\"}",
+      "name": "Trago de sangre",
+      "price": 15,
+      "stock": 3,
+      "line": "Sabe a hierro. No preguntes."
+    },
+    {
+      "item": "minecraft:tnt",
+      "count": 3,
+      "name": "Pólvora fina",
+      "price": 45,
+      "stock": 1,
+      "line": "Para charlas cortas con vecinos molestos."
+    },
+    {
+      "item": "minecraft:iron_ingot",
+      "count": 8,
+      "name": "Hierro fundido",
+      "price": 12,
+      "stock": 3,
+      "line": "Sale de lo que quedó de una armadura. No pregunté de quién."
+    },
+    {
+      "item": "minecraft:experience_bottle",
+      "count": 8,
+      "name": "Sabiduría embotellada",
+      "price": 20,
+      "stock": 2,
+      "line": "Experiencia de otro. Él ya no la necesita."
+    }
+  ]
+}

@@ -1,0 +1,64 @@
+{
+  "_info": "Vendedores ambulantes de Calaca War. Se editan con la Libreta de Mercaderes. Las skins van en config/calacawar_core/skins (png de 64x64).",
+  "vendedores": [
+    {
+      "id": "reliquiero",
+      "nombre": "El Reliquiero",
+      "skin": "reliquiero.png",
+      "minutos": 15,
+      "espera_segundos": 180,
+      "frase": "Compra al peor pracio :v",
+      "ofertas": [
+        {
+          "da": "{Count:1b,id:\"minecraft:golden_apple\"}",
+          "pide": [
+            "{Count:6b,id:\"calacawar_core:essence\"}"
+          ],
+          "stock": 3,
+          "texto": "Cosechada en un huerto que ya no existe."
+        },
+        {
+          "da": "{Count:2b,id:\"minecraft:ender_pearl\"}",
+          "pide": [
+            "{Count:10b,id:\"calacawar_core:essence\"}"
+          ],
+          "stock": 4,
+          "texto": "Todavía se mueven si las mirás mucho."
+        },
+        {
+          "da": "{Count:1b,id:\"minecraft:enchanted_book\",tag:{StoredEnchantments:[{id:\"minecraft:sharpness\",lvl:3s}]}}",
+          "pide": [
+            "{Count:4b,id:\"calacawar_core:essence\"}",
+            "{Count:8b,id:\"minecraft:bone\"}"
+          ],
+          "stock": 2,
+          "texto": "Las páginas murmuran algo sobre filo."
+        },
+        {
+          "da": "{Count:3b,id:\"minecraft:diamond\"}",
+          "pide": [
+            "{Count:14b,id:\"calacawar_core:essence\"}"
+          ],
+          "stock": 2,
+          "texto": "Sacados de la boca de un esqueleto."
+        },
+        {
+          "da": "{Count:1b,id:\"minecraft:totem_of_undying\"}",
+          "pide": [
+            "{Count:24b,id:\"calacawar_core:essence\"}"
+          ],
+          "stock": 1,
+          "texto": "Alguien murió para que lo tengas. Dos veces."
+        },
+        {
+          "da": "{Count:9b,id:\"calacawar_core:essence\"}",
+          "pide": [
+            "{Count:1b,id:\"minecraft:netherite_scrap\"}"
+          ],
+          "stock": 3,
+          "texto": "Huele a infierno. No pregunto de dónde salió."
+        }
+      ]
+    }
+  ]
+}

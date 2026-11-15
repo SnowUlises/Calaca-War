@@ -1,0 +1,250 @@
+{
+  "_info": "Templates de partida de Calaca War: en qué minuto cae cada evento y con qué ajustes. Se arman desde el Creador de sets y se eligen en el Editor de partida.",
+  "version": 2,
+  "sets": [
+    {
+      "id": "vanilla",
+      "name": "Vanilla",
+      "entries": [
+        {
+          "uid": 1998252865,
+          "minute": 0,
+          "event": "tregua"
+        },
+        {
+          "uid": 1322526529,
+          "minute": 240,
+          "event": "eco"
+        },
+        {
+          "uid": 371949836,
+          "minute": 420,
+          "event": "apagados"
+        },
+        {
+          "uid": 1988457868,
+          "minute": 450,
+          "event": "juicio"
+        }
+      ]
+    },
+    {
+      "id": "vanilla_plus",
+      "name": "Vanilla+",
+      "entries": [
+        {
+          "uid": 788142646,
+          "minute": 0,
+          "event": "tregua"
+        },
+        {
+          "uid": 83902128,
+          "minute": 50,
+          "event": "cofre"
+        },
+        {
+          "uid": 383253363,
+          "minute": 95,
+          "event": "vendedor.reliquiero"
+        },
+        {
+          "uid": 1261177625,
+          "minute": 140,
+          "event": "lluvia"
+        },
+        {
+          "uid": 643786741,
+          "minute": 190,
+          "event": "trono"
+        },
+        {
+          "uid": 1224644131,
+          "minute": 240,
+          "event": "eco"
+        },
+        {
+          "uid": 1235781052,
+          "minute": 280,
+          "event": "cofre",
+          "params": {
+            "cofres": 2
+          }
+        },
+        {
+          "uid": 1350282336,
+          "minute": 320,
+          "event": "vendedor.reliquiero"
+        },
+        {
+          "uid": 370439104,
+          "minute": 360,
+          "event": "lluvia",
+          "params": {
+            "meteoros": 4
+          }
+        },
+        {
+          "uid": 971765995,
+          "minute": 395,
+          "event": "cofre"
+        },
+        {
+          "uid": 2136263156,
+          "minute": 420,
+          "event": "apagados"
+        },
+        {
+          "uid": 1977784920,
+          "minute": 450,
+          "event": "juicio"
+        }
+      ]
+    },
+    {
+      "id": "short",
+      "name": "Short",
+      "entries": [
+        {
+          "uid": 1183664990,
+          "minute": 0,
+          "event": "tregua",
+          "params": {
+            "minutos": 15
+          }
+        },
+        {
+          "uid": 1464759640,
+          "minute": 120,
+          "event": "eco"
+        },
+        {
+          "uid": 1977151387,
+          "minute": 200,
+          "event": "apagados"
+        },
+        {
+          "uid": 397779426,
+          "minute": 225,
+          "event": "juicio"
+        }
+      ]
+    },
+    {
+      "id": "short_plus",
+      "name": "Short+",
+      "entries": [
+        {
+          "uid": 321379132,
+          "minute": 0,
+          "event": "tregua",
+          "params": {
+            "minutos": 15
+          }
+        },
+        {
+          "uid": 1026467640,
+          "minute": 30,
+          "event": "cofre"
+        },
+        {
+          "uid": 479980948,
+          "minute": 60,
+          "event": "vendedor.reliquiero",
+          "params": {
+            "tienda": 8
+          }
+        },
+        {
+          "uid": 1480092630,
+          "minute": 90,
+          "event": "lluvia"
+        },
+        {
+          "uid": 1071054509,
+          "minute": 120,
+          "event": "eco"
+        },
+        {
+          "uid": 123793389,
+          "minute": 145,
+          "event": "trono",
+          "params": {
+            "reinado": 6
+          }
+        },
+        {
+          "uid": 1727777077,
+          "minute": 170,
+          "event": "cofre",
+          "params": {
+            "cofres": 2
+          }
+        },
+        {
+          "uid": 110527401,
+          "minute": 185,
+          "event": "vendedor.reliquiero",
+          "params": {
+            "tienda": 8
+          }
+        },
+        {
+          "uid": 501158482,
+          "minute": 200,
+          "event": "apagados"
+        },
+        {
+          "uid": 1336661546,
+          "minute": 225,
+          "event": "juicio"
+        }
+      ]
+    },
+    {
+      "id": "basico",
+      "name": "Basico",
+      "entries": [
+        {
+          "uid": 28799383,
+          "minute": 0,
+          "event": "tregua"
+        },
+        {
+          "uid": 1755092313,
+          "minute": 30,
+          "event": "cofre"
+        },
+        {
+          "uid": 1591418661,
+          "minute": 40,
+          "event": "lluvia"
+        },
+        {
+          "uid": 796261270,
+          "minute": 60,
+          "event": "vendedor.reliquiero"
+        },
+        {
+          "uid": 1086725677,
+          "minute": 80,
+          "event": "trono"
+        },
+        {
+          "uid": 855272949,
+          "minute": 180,
+          "event": "eco"
+        },
+        {
+          "uid": 1853082261,
+          "minute": 220,
+          "event": "apagados"
+        },
+        {
+          "uid": 1798847864,
+          "minute": 230,
+          "event": "juicio"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,60 @@
+{
+  "cooldownDefaultsVersion": 1,
+  "cooldownMultiplier": 1.0,
+  "damageMultiplier": 1.0,
+  "spatialPathCooldownTicks": 20,
+  "singularityCooldownTicks": [
+    60,
+    120,
+    200
+  ],
+  "earthDrillCooldownTicks": [
+    80,
+    140,
+    220,
+    320
+  ],
+  "stoneCannonCooldownTicks": [
+    40,
+    80,
+    140,
+    220
+  ],
+  "supernovaCooldownTicks": 900,
+  "atomicCooldownTicks": 1200,
+  "fugaCooldownTicks": 1200,
+  "singularityDamageMultipliers": [
+    1.0,
+    1.0,
+    1.0
+  ],
+  "earthDrillDamageMultipliers": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+  ],
+  "stoneCannonDamageMultipliers": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+  ],
+  "supernovaDamageMultiplier": 1.0,
+  "supernovaInstantKillHealthThreshold": 50.0,
+  "supernovaTerrainDamage": true,
+  "supernovaBlockLift": true,
+  "earthDrillTerrainDamage": true,
+  "earthDrillBlockLift": true,
+  "stoneCannonTerrainDamage": true,
+  "atomicTerrainDamage": true,
+  "fugaTerrainDamage": true,
+  "fugaTerrainRadius": 48,
+  "fugaDamage": 9999.0,
+  "atomicTerrainRadius": 98,
+  "atomicDamage": 9999.0,
+  "atomicShockwaveDamage": 15.0,
+  "supernovaTerrainRadius": 120,
+  "supernovaMaxDisplays": 1800,
+  "dimensionBlacklist": []
+}

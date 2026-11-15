@@ -1,0 +1,881 @@
+{
+ "formato": 1,
+ "nombre": "Calaca War",
+ "version": "1.0.0",
+ "minecraft": "1.20.1",
+ "forge": "47.4.0",
+ "base_url": "https://raw.githubusercontent.com/SnowUlises/Calaca-War/main/",
+ "archivos": [
+  {
+   "path": "config/beforethefall-filming.properties",
+   "size": 221,
+   "sha1": "4d581385d4bd68d2d2c5ee0026da0bf2812ab836"
+  },
+  {
+   "path": "config/beforethefall-survival.toml",
+   "size": 4060,
+   "sha1": "36d00ad92f33355c50209d3fa7377c9dc7d152e3"
+  },
+  {
+   "path": "config/c2me.toml",
+   "size": 0,
+   "sha1": "da39a3ee5e6b4b0d3255bfef95601890afd80709"
+  },
+  {
+   "path": "config/calacawar-client.json",
+   "size": 18,
+   "sha1": "ef8440a71b547a78c0dc3c5dcb6c7048d78e5c86"
+  },
+  {
+   "path": "config/calacawar/estructuras/LEEME.txt",
+   "size": 353,
+   "sha1": "64dc4049e19519101cec215f4295e209e41762b4"
+  },
+  {
+   "path": "config/calacawar/sets/test_1.json",
+   "size": 297,
+   "sha1": "bb237e92dc66344e4749c3a6b13fc8761a501881"
+  },
+  {
+   "path": "config/calacawar/structures/README.txt",
+   "size": 353,
+   "sha1": "7a76631288a1d17a65f1d0244008176fc0f5bde2"
+  },
+  {
+   "path": "config/calacawar_core/airdrops.json",
+   "size": 1432,
+   "sha1": "f365179efbe5d9a81869bf6a6e4ddd68b4d5da3d"
+  },
+  {
+   "path": "config/calacawar_core/avisos.txt",
+   "size": 1,
+   "sha1": "da4b9237bacccdf19c0760cab7aec4a8359010b0"
+  },
+  {
+   "path": "config/calacawar_core/defense.json",
+   "size": 430,
+   "sha1": "b7eb31ff5b9f6d2205e44544cbb00c989bcd2939"
+  },
+  {
+   "path": "config/calacawar_core/events.json",
+   "size": 2487,
+   "sha1": "80d90e41d8c07499a2ac4a7b8389240779d34b6c"
+  },
+  {
+   "path": "config/calacawar_core/goblins.json",
+   "size": 456,
+   "sha1": "83fedd4f6d0c8d4a40150cbea450b67153b639bd"
+  },
+  {
+   "path": "config/calacawar_core/layouts/cripta.json",
+   "size": 92838,
+   "sha1": "ba6a910ac963bd44d52a6cefb33b08f481e8fe39"
+  },
+  {
+   "path": "config/calacawar_core/mobs.json",
+   "size": 40,
+   "sha1": "3e3acaa8dca7acc5bfa32cf67fd5279187e318e9"
+  },
+  {
+   "path": "config/calacawar_core/shop.json",
+   "size": 3173,
+   "sha1": "425547a8a06ac34594e909f7830a2c2168b5d6d8"
+  },
+  {
+   "path": "config/calacawar_core/skins/reliquiero.png",
+   "size": 1197,
+   "sha1": "1bfa7a585166fe1d01533aea4c4b241d8900fdbd"
+  },
+  {
+   "path": "config/calacawar_core/timeline.json",
+   "size": 5050,
+   "sha1": "dc31730815dc1bd1de615d495c4573c93f38e6ca"
+  },
+  {
+   "path": "config/calacawar_core/vendedores.json",
+   "size": 2039,
+   "sha1": "c53752a26633499ea69a9c89064bf6d461bd4aec"
+  },
+  {
+   "path": "config/connector.json",
+   "size": 144,
+   "sha1": "23753ccb810b4975165448040217d5c5d55a8322"
+  },
+  {
+   "path": "config/curios-client.toml",
+   "size": 706,
+   "sha1": "3034250c05362494c9f366e5cca449dcea88885d"
+  },
+  {
+   "path": "config/curios-common.toml",
+   "size": 161,
+   "sha1": "71b3af0db517d1651174a40732633899cbabc927"
+  },
+  {
+   "path": "config/embeddium-fingerprint.json",
+   "size": 427,
+   "sha1": "6ef076c09f6b12f029b0418f2f8ca2f6ae98af1b"
+  },
+  {
+   "path": "config/embeddium-mixins.properties",
+   "size": 269,
+   "sha1": "a729ee50d18cf2204ff9fc33bc21641d55185c88"
+  },
+  {
+   "path": "config/embeddium-options.json",
+   "size": 851,
+   "sha1": "de8add0f213fe49e16011076be4efa52e5f4b570"
+  },
+  {
+   "path": "config/fabric/indigo-renderer.properties",
+   "size": 290,
+   "sha1": "2c30e12ea76d2f4c1beecd2a2f23cc8fc9d10d5f"
+  },
+  {
+   "path": "config/flywheel-client.toml",
+   "size": 623,
+   "sha1": "277960be83ecac5080dd3dccdf809f2a55d3176d"
+  },
+  {
+   "path": "config/fml.toml",
+   "size": 1147,
+   "sha1": "5850d014d8cc0cb6e529a9630398080506f90262"
+  },
+  {
+   "path": "config/forge-client.toml",
+   "size": 1628,
+   "sha1": "55e80f51f0c9cf66de1f95c4d775b24dc59627a1"
+  },
+  {
+   "path": "config/godwand-client.json",
+   "size": 262,
+   "sha1": "5f59e0b838feca279b0766ba51afa16438fcc40b"
+  },
+  {
+   "path": "config/godwand-server.json",
+   "size": 1180,
+   "sha1": "eeceb6a99d9d299cd02879da0862d7f13f688c5e"
+  },
+  {
+   "path": "config/hedges_bestiary.toml",
+   "size": 897,
+   "sha1": "e8404ecb451065020101074b8831fe387b096c30"
+  },
+  {
+   "path": "config/holyhell-common.toml",
+   "size": 316,
+   "sha1": "4b1c05a91941e7137681be5f15f07f943fecdfc0"
+  },
+  {
+   "path": "config/oculus.properties",
+   "size": 285,
+   "sha1": "8e01d0d5b225978355d1c917b71fea98e92a47cc"
+  },
+  {
+   "path": "config/opposing_force-common.toml",
+   "size": 1867,
+   "sha1": "d145d7fdcc41866856be867e65b2cffbec9788a7"
+  },
+  {
+   "path": "config/ponder-client.toml",
+   "size": 619,
+   "sha1": "0b19ea00344a54de06114aa1a0f1d4bec95782d1"
+  },
+  {
+   "path": "config/radiation-client.toml",
+   "size": 1437,
+   "sha1": "376ea0ac3d5d2dc769f9db9440b49c2bbf93223b"
+  },
+  {
+   "path": "config/replaymod.json",
+   "size": 1738,
+   "sha1": "6c8d3085ceb2cfec740b2eac3543c8592182be0a"
+  },
+  {
+   "path": "config/resourcify.json",
+   "size": 275,
+   "sha1": "c9fb5ff03771a69d32badb5d695bf86b1ee81c88"
+  },
+  {
+   "path": "config/sodium-fingerprint.json",
+   "size": 427,
+   "sha1": "1892735f2eee830f18fbd953cd49c848417819d7"
+  },
+  {
+   "path": "config/sodium-mixins.properties",
+   "size": 265,
+   "sha1": "b1fdf3038060accec696177db699276ed074a6d2"
+  },
+  {
+   "path": "config/sodium-options.json",
+   "size": 632,
+   "sha1": "ec80b098cc66d77092a0869ad4bed3799972c45d"
+  },
+  {
+   "path": "config/superbwarfare-client.toml",
+   "size": 4230,
+   "sha1": "ca0edbf6516aa0b826e7e5374b74c883db6ee2fd"
+  },
+  {
+   "path": "config/superbwarfare-common.toml",
+   "size": 468,
+   "sha1": "6f401a59c1cfbe63ee7c8ab56d5aeda2eeeff4cd"
+  },
+  {
+   "path": "config/voxy-config.json",
+   "size": 237,
+   "sha1": "8ff2583f21ac50d9f39b8dc018d87b837bd7aba1"
+  },
+  {
+   "path": "config/xx_tripod_invasion-common.toml",
+   "size": 808,
+   "sha1": "0f30b6f479488531f1b7a139dca7d9bfc5b34bb0"
+  },
+  {
+   "path": "mods/.connector/bbs-2.4-1.20.1$jna-5.14.0_mapped_srg_1.20.1.jar",
+   "size": 1888086,
+   "sha1": "d7bc41ae96adf4126ff315c1ed5f758ef6f5359a"
+  },
+  {
+   "path": "mods/.connector/bbs-2.4-1.20.1$jna-5.14.0_mapped_srg_1.20.1.jar.input",
+   "size": 92,
+   "sha1": "50be40a267f99affbdbb6d98ea1b433d8ea1250c"
+  },
+  {
+   "path": "mods/.connector/bbs-2.4-1.20.1_mapped_srg_1.20.1.jar",
+   "size": 10824049,
+   "sha1": "a4d42f629fe1342d7248c27fa0bcf7858893904f"
+  },
+  {
+   "path": "mods/.connector/bbs-2.4-1.20.1_mapped_srg_1.20.1.jar.input",
+   "size": 92,
+   "sha1": "56a9479f92059c3622ceb4242637a35e6db4bca7"
+  },
+  {
+   "path": "mods/.connector/replaymod-1.20.1-2.6.23_mapped_srg_1.20.1.jar",
+   "size": 15143792,
+   "sha1": "ed07291495afbff41187a958d5731853a9830915"
+  },
+  {
+   "path": "mods/.connector/replaymod-1.20.1-2.6.23_mapped_srg_1.20.1.jar.input",
+   "size": 92,
+   "sha1": "3cba5851794a6b79e1aeb45274a055e406f97502"
+  },
+  {
+   "path": "mods/.connector/sodium-fabric-0.5.13+mc1.20.1_mapped_srg_1.20.1.jar",
+   "size": 983665,
+   "sha1": "47d3b51354ea05f6d25dee2fc78079f1681e1de2"
+  },
+  {
+   "path": "mods/.connector/sodium-fabric-0.5.13+mc1.20.1_mapped_srg_1.20.1.jar.input",
+   "size": 92,
+   "sha1": "4713ab970b2a98df5377f2c0dc6ab7dca37db3db"
+  },
+  {
+   "path": "mods/.connector/temp/bbs-2.4-1.20.1$jna-5.14.0.jar",
+   "size": 1881169,
+   "sha1": "51983302e0b330869205ddd66980c925e48aceb3"
+  },
+  {
+   "path": "mods/.connector/temp/bbs-2.4-1.20.1$jna-5.14.0.jar.input",
+   "size": 92,
+   "sha1": "50be40a267f99affbdbb6d98ea1b433d8ea1250c"
+  },
+  {
+   "path": "mods/.connector/temp/replaymod-1.20.1-2.6.23$fabric-api-base-0.4.29+b04edc7a77.jar",
+   "size": 28980,
+   "sha1": "fc4d250390c237a8ff0ee0d63e279d973aec4f8a"
+  },
+  {
+   "path": "mods/.connector/temp/replaymod-1.20.1-2.6.23$fabric-api-base-0.4.29+b04edc7a77.jar.input",
+   "size": 92,
+   "sha1": "71446299d250829567e363febe84ce78cc88443b"
+  },
+  {
+   "path": "mods/.connector/temp/replaymod-1.20.1-2.6.23$fabric-key-binding-api-v1-1.0.36+fb8d95da77.jar",
+   "size": 19291,
+   "sha1": "07445d1cf9452bcdefaa0b02dcc27c8f2e740e03"
+  },
+  {
+   "path": "mods/.connector/temp/replaymod-1.20.1-2.6.23$fabric-key-binding-api-v1-1.0.36+fb8d95da77.jar.input",
+   "size": 92,
+   "sha1": "0da41fc91f7000c3a877ed8b781ce6faf532b435"
+  },
+  {
+   "path": "mods/.connector/temp/replaymod-1.20.1-2.6.23$fabric-networking-api-v1-1.3.8+b3afc78b77.jar",
+   "size": 132021,
+   "sha1": "f9bc9e556d659a88355c97ec22bbf1fe6db1f9cb"
+  },
+  {
+   "path": "mods/.connector/temp/replaymod-1.20.1-2.6.23$fabric-networking-api-v1-1.3.8+b3afc78b77.jar.input",
+   "size": 92,
+   "sha1": "3aab2086e1ec9ecf444ff19f536bb149a0f8c7be"
+  },
+  {
+   "path": "mods/.connector/temp/replaymod-1.20.1-2.6.23$fabric-resource-loader-v0-0.11.7+f7923f6d77.jar",
+   "size": 91509,
+   "sha1": "566ac866f2758d0d614b5fd9bafd85b63c225dd7"
+  },
+  {
+   "path": "mods/.connector/temp/replaymod-1.20.1-2.6.23$fabric-resource-loader-v0-0.11.7+f7923f6d77.jar.input",
+   "size": 92,
+   "sha1": "52eeb8acbdf1a58a888a8135bc91fd38c97d915a"
+  },
+  {
+   "path": "mods/.connector/temp/replaymod-1.20.1-2.6.23$fabric-screen-api-v1-2.0.6+b3afc78b77.jar",
+   "size": 57104,
+   "sha1": "6e68008d9b78ac09e42b00d09830e1d5eb29bfe9"
+  },
+  {
+   "path": "mods/.connector/temp/replaymod-1.20.1-2.6.23$fabric-screen-api-v1-2.0.6+b3afc78b77.jar.input",
+   "size": 92,
+   "sha1": "352be89062442fdc9fd57b41dd72396e38544f76"
+  },
+  {
+   "path": "mods/.connector/temp/replaymod-1.20.1-2.6.23$mixinextras-fabric-0.3.6.jar",
+   "size": 175216,
+   "sha1": "8a893948497c01c773d66908ca03dc12bac272d0"
+  },
+  {
+   "path": "mods/.connector/temp/replaymod-1.20.1-2.6.23$mixinextras-fabric-0.3.6.jar.input",
+   "size": 92,
+   "sha1": "a1df528098eaa69b5ad197a3b7b5bb61ba080c67"
+  },
+  {
+   "path": "mods/.connector/temp/sodium-fabric-0.5.13+mc1.20.1$fabric-api-base-0.4.31+1802ada577.jar",
+   "size": 31150,
+   "sha1": "4bf042897a95d608e162653592c3532badc647ad"
+  },
+  {
+   "path": "mods/.connector/temp/sodium-fabric-0.5.13+mc1.20.1$fabric-api-base-0.4.31+1802ada577.jar.input",
+   "size": 92,
+   "sha1": "75c753aa0fcfb512e13bf85a71538c648522c287"
+  },
+  {
+   "path": "mods/.connector/temp/sodium-fabric-0.5.13+mc1.20.1$fabric-block-view-api-v2-1.0.1+1802ada577.jar",
+   "size": 24008,
+   "sha1": "8219b9bddf416d15af3ad5c4c298efbee654a9a1"
+  },
+  {
+   "path": "mods/.connector/temp/sodium-fabric-0.5.13+mc1.20.1$fabric-block-view-api-v2-1.0.1+1802ada577.jar.input",
+   "size": 92,
+   "sha1": "cd8e862913b6ac92198e2f10d3d23793b0c55ff5"
+  },
+  {
+   "path": "mods/.connector/temp/sodium-fabric-0.5.13+mc1.20.1$fabric-rendering-data-attachment-v1-0.3.37+92a0d36777.jar",
+   "size": 17814,
+   "sha1": "9eabcfa6ae8cf5513f4e3fdf855b5f9f6dc95d52"
+  },
+  {
+   "path": "mods/.connector/temp/sodium-fabric-0.5.13+mc1.20.1$fabric-rendering-data-attachment-v1-0.3.37+92a0d36777.jar.input",
+   "size": 92,
+   "sha1": "fef86bba43b251e2f1a826df7d62d9d2fb67fd49"
+  },
+  {
+   "path": "mods/.connector/temp/sodium-fabric-0.5.13+mc1.20.1$fabric-rendering-fluids-v1-3.0.28+1802ada577.jar",
+   "size": 28469,
+   "sha1": "fcf08dff7e6915294ccc908425bbaa84f0083d34"
+  },
+  {
+   "path": "mods/.connector/temp/sodium-fabric-0.5.13+mc1.20.1$fabric-rendering-fluids-v1-3.0.28+1802ada577.jar.input",
+   "size": 92,
+   "sha1": "0cc087eaf63c12b065ef091c78fde4d3df5d7355"
+  },
+  {
+   "path": "mods/.connector/temp/sodium-fabric-0.5.13+mc1.20.1$fabric-resource-loader-v0-0.11.11+fb82e9d777.jar",
+   "size": 94532,
+   "sha1": "7c74a014529efc1b2268debe74598612cd8de552"
+  },
+  {
+   "path": "mods/.connector/temp/sodium-fabric-0.5.13+mc1.20.1$fabric-resource-loader-v0-0.11.11+fb82e9d777.jar.input",
+   "size": 92,
+   "sha1": "44d4e65205c771c6fc0137f063060e1078d04099"
+  },
+  {
+   "path": "mods/.connector/temp/voxy-0.2.13-alpha$commons-pool2-2.12.0.jar",
+   "size": 152530,
+   "sha1": "2b5abb80d9c3b19d03b042d8ffd16527817db891"
+  },
+  {
+   "path": "mods/.connector/temp/voxy-0.2.13-alpha$commons-pool2-2.12.0.jar.input",
+   "size": 92,
+   "sha1": "c0fe6e02c28b22a8525373e4697ecc10dd21ab31"
+  },
+  {
+   "path": "mods/.connector/temp/voxy-0.2.13-alpha$jedis-5.1.0.jar",
+   "size": 897708,
+   "sha1": "a78d77fdaed6a9fc62d2424acd9f335b31a1bbc3"
+  },
+  {
+   "path": "mods/.connector/temp/voxy-0.2.13-alpha$jedis-5.1.0.jar.input",
+   "size": 92,
+   "sha1": "932a311917be5d87e05311fc63d10a3b4784ab2f"
+  },
+  {
+   "path": "mods/.connector/temp/voxy-0.2.13-alpha$lwjgl-lmdb-3.3.1-natives-linux.jar",
+   "size": 54994,
+   "sha1": "817b66ff9e7f681696c4e28b011ebfd621276e58"
+  },
+  {
+   "path": "mods/.connector/temp/voxy-0.2.13-alpha$lwjgl-lmdb-3.3.1-natives-linux.jar.input",
+   "size": 92,
+   "sha1": "f998e988375d23a2bb8b317e86ffce4343a03c01"
+  },
+  {
+   "path": "mods/.connector/temp/voxy-0.2.13-alpha$lwjgl-lmdb-3.3.1-natives-windows.jar",
+   "size": 113485,
+   "sha1": "187e5534498a28b2815f1ff6dab0ee41eeb5f1ca"
+  },
+  {
+   "path": "mods/.connector/temp/voxy-0.2.13-alpha$lwjgl-lmdb-3.3.1-natives-windows.jar.input",
+   "size": 92,
+   "sha1": "63374da531b1e2e2f2554b810bad78d84803a864"
+  },
+  {
+   "path": "mods/.connector/temp/voxy-0.2.13-alpha$lwjgl-lmdb-3.3.1.jar",
+   "size": 28756,
+   "sha1": "322df2ff1333e36852ee7162abc625425cf6e387"
+  },
+  {
+   "path": "mods/.connector/temp/voxy-0.2.13-alpha$lwjgl-lmdb-3.3.1.jar.input",
+   "size": 92,
+   "sha1": "39559523d39c6ecf48649751cfdab61b629fbacf"
+  },
+  {
+   "path": "mods/.connector/temp/voxy-0.2.13-alpha$lwjgl-zstd-3.3.1-natives-linux.jar",
+   "size": 284193,
+   "sha1": "421efc76e1d9b5f44118ce80af2de3ee187ef1f6"
+  },
+  {
+   "path": "mods/.connector/temp/voxy-0.2.13-alpha$lwjgl-zstd-3.3.1-natives-linux.jar.input",
+   "size": 92,
+   "sha1": "562a20f5855b77c88815c189f25f0e8de8eab739"
+  },
+  {
+   "path": "mods/.connector/temp/voxy-0.2.13-alpha$lwjgl-zstd-3.3.1-natives-windows.jar",
+   "size": 247081,
+   "sha1": "1cfed963622de9fe2df7bfa6c9288c2b28cfe9c4"
+  },
+  {
+   "path": "mods/.connector/temp/voxy-0.2.13-alpha$lwjgl-zstd-3.3.1-natives-windows.jar.input",
+   "size": 92,
+   "sha1": "9b94dbfef2062626d2caa3b0903108bc541dfc3b"
+  },
+  {
+   "path": "mods/.connector/temp/voxy-0.2.13-alpha$lwjgl-zstd-3.3.1.jar",
+   "size": 77161,
+   "sha1": "ae664231e50c963210561420a61aa56489f37df6"
+  },
+  {
+   "path": "mods/.connector/temp/voxy-0.2.13-alpha$lwjgl-zstd-3.3.1.jar.input",
+   "size": 92,
+   "sha1": "4c80ef701953d5e3728631a9b64aef5b293bae48"
+  },
+  {
+   "path": "mods/.connector/temp/voxy-0.2.13-alpha$lz4-java-1.8.0.jar",
+   "size": 683036,
+   "sha1": "81719642366b797b24dde01e6994b33497a10830"
+  },
+  {
+   "path": "mods/.connector/temp/voxy-0.2.13-alpha$lz4-java-1.8.0.jar.input",
+   "size": 92,
+   "sha1": "b5549e9509e47646b0804542a9b2922eab88174d"
+  },
+  {
+   "path": "mods/.connector/temp/voxy-0.2.13-alpha$rocksdbjni-10.2.1.jar",
+   "size": 24500633,
+   "sha1": "5df256cc0e6b2747226c377ee8bdd8e3a0f25103"
+  },
+  {
+   "path": "mods/.connector/temp/voxy-0.2.13-alpha$rocksdbjni-10.2.1.jar.input",
+   "size": 92,
+   "sha1": "b41196ff34520e471620ba2fb2ead4e01343a9af"
+  },
+  {
+   "path": "mods/.connector/temp/voxy-0.2.13-alpha$xz-1.10.jar",
+   "size": 170896,
+   "sha1": "b8fd290968d973cacf4274cc51ebe53375ddae11"
+  },
+  {
+   "path": "mods/.connector/temp/voxy-0.2.13-alpha$xz-1.10.jar.input",
+   "size": 92,
+   "sha1": "65d02c8bb017309c9edb0b5f30eb9eeb45cd5d13"
+  },
+  {
+   "path": "mods/.connector/voxy-0.2.13-alpha$commons-pool2-2.12.0_mapped_srg_1.20.1.jar",
+   "size": 155594,
+   "sha1": "fd2be35e0bdd1bf1eb1de10506976c79a15dc444"
+  },
+  {
+   "path": "mods/.connector/voxy-0.2.13-alpha$commons-pool2-2.12.0_mapped_srg_1.20.1.jar.input",
+   "size": 92,
+   "sha1": "c0fe6e02c28b22a8525373e4697ecc10dd21ab31"
+  },
+  {
+   "path": "mods/.connector/voxy-0.2.13-alpha$jedis-5.1.0_mapped_srg_1.20.1.jar",
+   "size": 921043,
+   "sha1": "1e35b5f70fefe1c2fda4bc2693768cd3686976b4"
+  },
+  {
+   "path": "mods/.connector/voxy-0.2.13-alpha$jedis-5.1.0_mapped_srg_1.20.1.jar.input",
+   "size": 92,
+   "sha1": "932a311917be5d87e05311fc63d10a3b4784ab2f"
+  },
+  {
+   "path": "mods/.connector/voxy-0.2.13-alpha$lwjgl-lmdb-3.3.1-natives-linux_mapped_srg_1.20.1.jar",
+   "size": 55799,
+   "sha1": "32877f9a5ad8cbb4fde90039429f3be99cbf72f9"
+  },
+  {
+   "path": "mods/.connector/voxy-0.2.13-alpha$lwjgl-lmdb-3.3.1-natives-linux_mapped_srg_1.20.1.jar.input",
+   "size": 92,
+   "sha1": "f998e988375d23a2bb8b317e86ffce4343a03c01"
+  },
+  {
+   "path": "mods/.connector/voxy-0.2.13-alpha$lwjgl-lmdb-3.3.1-natives-windows_mapped_srg_1.20.1.jar",
+   "size": 114292,
+   "sha1": "6ca12fc0b705e31985b7bf77a5a968ed400e0f59"
+  },
+  {
+   "path": "mods/.connector/voxy-0.2.13-alpha$lwjgl-lmdb-3.3.1-natives-windows_mapped_srg_1.20.1.jar.input",
+   "size": 92,
+   "sha1": "63374da531b1e2e2f2554b810bad78d84803a864"
+  },
+  {
+   "path": "mods/.connector/voxy-0.2.13-alpha$lwjgl-lmdb-3.3.1_mapped_srg_1.20.1.jar",
+   "size": 30091,
+   "sha1": "e5e44de20d93042485d1caf7e6fafbeeed3e4fe9"
+  },
+  {
+   "path": "mods/.connector/voxy-0.2.13-alpha$lwjgl-lmdb-3.3.1_mapped_srg_1.20.1.jar.input",
+   "size": 92,
+   "sha1": "39559523d39c6ecf48649751cfdab61b629fbacf"
+  },
+  {
+   "path": "mods/.connector/voxy-0.2.13-alpha$lwjgl-zstd-3.3.1-natives-linux_mapped_srg_1.20.1.jar",
+   "size": 284998,
+   "sha1": "496e5255473ed2d945c8b51face84f7935bea728"
+  },
+  {
+   "path": "mods/.connector/voxy-0.2.13-alpha$lwjgl-zstd-3.3.1-natives-linux_mapped_srg_1.20.1.jar.input",
+   "size": 92,
+   "sha1": "562a20f5855b77c88815c189f25f0e8de8eab739"
+  },
+  {
+   "path": "mods/.connector/voxy-0.2.13-alpha$lwjgl-zstd-3.3.1-natives-windows_mapped_srg_1.20.1.jar",
+   "size": 247888,
+   "sha1": "31a00e5cd7653dc9871de6abc27fcbf3bcf37494"
+  },
+  {
+   "path": "mods/.connector/voxy-0.2.13-alpha$lwjgl-zstd-3.3.1-natives-windows_mapped_srg_1.20.1.jar.input",
+   "size": 92,
+   "sha1": "9b94dbfef2062626d2caa3b0903108bc541dfc3b"
+  },
+  {
+   "path": "mods/.connector/voxy-0.2.13-alpha$lwjgl-zstd-3.3.1_mapped_srg_1.20.1.jar",
+   "size": 79217,
+   "sha1": "733847882acc2de666d1549945a8d3c614cd8301"
+  },
+  {
+   "path": "mods/.connector/voxy-0.2.13-alpha$lwjgl-zstd-3.3.1_mapped_srg_1.20.1.jar.input",
+   "size": 92,
+   "sha1": "4c80ef701953d5e3728631a9b64aef5b293bae48"
+  },
+  {
+   "path": "mods/.connector/voxy-0.2.13-alpha$lz4-java-1.8.0_mapped_srg_1.20.1.jar",
+   "size": 687143,
+   "sha1": "7b61c69e6b5ed0ef795ea67e42ac22041acf734a"
+  },
+  {
+   "path": "mods/.connector/voxy-0.2.13-alpha$lz4-java-1.8.0_mapped_srg_1.20.1.jar.input",
+   "size": 92,
+   "sha1": "b5549e9509e47646b0804542a9b2922eab88174d"
+  },
+  {
+   "path": "mods/.connector/voxy-0.2.13-alpha$rocksdbjni-10.2.1_mapped_srg_1.20.1.jar",
+   "size": 24510361,
+   "sha1": "3c9efce0bda3d4e490f34307496aebe90e975924"
+  },
+  {
+   "path": "mods/.connector/voxy-0.2.13-alpha$rocksdbjni-10.2.1_mapped_srg_1.20.1.jar.input",
+   "size": 92,
+   "sha1": "b41196ff34520e471620ba2fb2ead4e01343a9af"
+  },
+  {
+   "path": "mods/.connector/voxy-0.2.13-alpha$xz-1.10_mapped_srg_1.20.1.jar",
+   "size": 176658,
+   "sha1": "f47407acbac623f3af452e268e4e0bffd0d457cf"
+  },
+  {
+   "path": "mods/.connector/voxy-0.2.13-alpha$xz-1.10_mapped_srg_1.20.1.jar.input",
+   "size": 92,
+   "sha1": "65d02c8bb017309c9edb0b5f30eb9eeb45cd5d13"
+  },
+  {
+   "path": "mods/.connector/voxy-0.2.13-alpha_mapped_srg_1.20.1.jar",
+   "size": 12562639,
+   "sha1": "f53ffc7e7eb1bd96ac57d052ae084673346686a1"
+  },
+  {
+   "path": "mods/.connector/voxy-0.2.13-alpha_mapped_srg_1.20.1.jar.input",
+   "size": 92,
+   "sha1": "5ac6ad478df4a0903eb8a22fd3f0f9ed6c5d351d"
+  },
+  {
+   "path": "mods/AdvancementPlaques-1.20.1-forge-1.6.9.jar",
+   "size": 208850,
+   "sha1": "6e7b01db61f9646977bd06e9d85492a667d4a8bd"
+  },
+  {
+   "path": "mods/AmbientSounds_FORGE_v6.3.11_mc1.20.1.jar",
+   "size": 53432741,
+   "sha1": "61f0bcbfd404de4aeb0627b5b83a72d069fb1825"
+  },
+  {
+   "path": "mods/Connector-1.0.0-beta.49+1.20.1.jar",
+   "size": 5046109,
+   "sha1": "2b167110353c0622939a674b80ae35b1ed6b5625"
+  },
+  {
+   "path": "mods/Controlling-forge-1.20.1-12.0.2.jar",
+   "size": 115280,
+   "sha1": "6195a3d1464f8fb641d7e165163aea1a857ce08e"
+  },
+  {
+   "path": "mods/CrashAssistant-forge-1.19-1.20.1-1.11.12.jar",
+   "size": 3503813,
+   "sha1": "b309bd4803d5fcf27397b5ea60bbe4bb332bc809"
+  },
+  {
+   "path": "mods/CreativeCore_FORGE_v2.12.42_mc1.20.1.jar",
+   "size": 1144767,
+   "sha1": "1df289c0ac3ffb4b924eb73dc3d673af961479a8"
+  },
+  {
+   "path": "mods/Iceberg-1.20.1-forge-1.1.25.jar",
+   "size": 134551,
+   "sha1": "d551ff55814cfb01403b812459ee5a02b020d87b"
+  },
+  {
+   "path": "mods/ImmediatelyFast-Forge-1.5.5+1.20.4.jar",
+   "size": 532063,
+   "sha1": "9eacd407b7dea636d375dc47335d92f616484ea2"
+  },
+  {
+   "path": "mods/Jade-1.20.1-Forge-11.13.3.jar",
+   "size": 553487,
+   "sha1": "d08e64e66521d69e083c8525f1fc507f1c202384"
+  },
+  {
+   "path": "mods/LegendaryTooltips-1.20.1-forge-1.4.5.jar",
+   "size": 55258,
+   "sha1": "7d83a56572d333ea352706872f565b8b8537085c"
+  },
+  {
+   "path": "mods/MouseTweaks-forge-mc1.20.1-2.25.1.jar",
+   "size": 76237,
+   "sha1": "d751153e722a4e014691c83f39f5b07c6ec5333c"
+  },
+  {
+   "path": "mods/Not Enough Recipe Book-FORGE-0.4.1+1.20.1.jar",
+   "size": 21667,
+   "sha1": "c0806369f4257149664904db44efc60bd1785c17"
+  },
+  {
+   "path": "mods/OctoLib-FORGE-0.5.0.2+1.20.1.jar",
+   "size": 425388,
+   "sha1": "e963794076d2799db02eb91c4d61278ae8d4f179"
+  },
+  {
+   "path": "mods/Opposing-Force-1.20.1-2.0.3.jar",
+   "size": 7372212,
+   "sha1": "a8e4cd1493699cde7dde4a7e8ed427ca094df469"
+  },
+  {
+   "path": "mods/Prism-1.20.1-forge-1.0.5.jar",
+   "size": 52205,
+   "sha1": "bcb4bbb1052f49ed4fe6e7d5d7f91f68d45c3fe3"
+  },
+  {
+   "path": "mods/Resourcify (1.20.1-forge)-1.8.7.jar",
+   "size": 2953633,
+   "sha1": "9069186c0ee5b7f81bc78ddd2fc9855f96f5b249"
+  },
+  {
+   "path": "mods/Searchables-forge-1.20.1-1.0.3.jar",
+   "size": 77732,
+   "sha1": "5b976f6e76ec74cdef21865e31f56bcb11558db7"
+  },
+  {
+   "path": "mods/architectury-9.2.14-forge.jar",
+   "size": 580602,
+   "sha1": "a52918a500ff421180a1cbd1a0cabee712134ec4"
+  },
+  {
+   "path": "mods/arkane_domains-1.8.2-forge-1.20.1.jar",
+   "size": 12599883,
+   "sha1": "b9d91670f51d6a50b143f0351afc3c2203a69d0f"
+  },
+  {
+   "path": "mods/calacawar-1.0.0.jar",
+   "size": 418540,
+   "sha1": "ec259502fd4157024f04e169560b98f5cd9b0044"
+  },
+  {
+   "path": "mods/calacawar_core-1.0.0.jar",
+   "size": 2617146,
+   "sha1": "727f2f0fb1b44c9071518e8e732c7deef2991ae7"
+  },
+  {
+   "path": "mods/chinchulin-1.20.1-1.0.0.jar",
+   "size": 25481,
+   "sha1": "135c68c973b7babf9fae7498eea16d2766c9f0cd"
+  },
+  {
+   "path": "mods/coroutil-forge-1.20.1-1.3.7.jar",
+   "size": 64187,
+   "sha1": "7f5f0b62a638b6053c95919cbe8c2bea2e0c93d0"
+  },
+  {
+   "path": "mods/curios-forge-5.14.1+1.20.1.jar",
+   "size": 398066,
+   "sha1": "452175b95ad3db6ff58bb8968f6bf7a9d1e0f480"
+  },
+  {
+   "path": "mods/embeddium-0.3.31+mc1.20.1.jar",
+   "size": 1320675,
+   "sha1": "bb2fa8f3e493af16af9160d049f96c614a1faf2f"
+  },
+  {
+   "path": "mods/emi-1.1.24+1.20.1+forge.jar",
+   "size": 1121750,
+   "sha1": "ea320200878e4a49196760234a22da763671520a"
+  },
+  {
+   "path": "mods/entityculling-forge-1.12.1-mc1.20.1.jar",
+   "size": 1528604,
+   "sha1": "571a91dc42a266a70e44b6b459f996a0f7876c29"
+  },
+  {
+   "path": "mods/fabric-api-0.92.6+1.11.15+1.20.1.jar",
+   "size": 3065833,
+   "sha1": "a37689ff8da8a32f82304ea4a1011873bb4c7eca"
+  },
+  {
+   "path": "mods/ferritecore-6.0.1-forge.jar",
+   "size": 123034,
+   "sha1": "417fb6ce8f52abf40bd9d0390371790f9576f8ba"
+  },
+  {
+   "path": "mods/geckolib-forge-1.20.1-4.8.4.jar",
+   "size": 1038209,
+   "sha1": "50e1407869ef0e909e3bdda9328b8bd7db03fdc0"
+  },
+  {
+   "path": "mods/goblins_tyranny-1.2.3-forge-1.20.1.jar",
+   "size": 8428944,
+   "sha1": "84a87d207f626b1a76182d706249bc2dd36f617d"
+  },
+  {
+   "path": "mods/hedges_bestiary-1.0.7.jar",
+   "size": 5478240,
+   "sha1": "9f7eff86f2e9a6afaec6fd7e03e665c73fdb36de"
+  },
+  {
+   "path": "mods/holyhell-1.1.0.jar",
+   "size": 3090398,
+   "sha1": "921230ea5ca81e678ef15e8d5d2a12a7c0318bc9"
+  },
+  {
+   "path": "mods/jeed-1.20-2.2.6.jar",
+   "size": 173911,
+   "sha1": "c1bbf0193ba5cae59db7c273ebee26c4de37d7a9"
+  },
+  {
+   "path": "mods/kismet-1.0.0.jar",
+   "size": 1052560,
+   "sha1": "178621b5bf2adb0cfa14f84871a6d3e9edcfc15a"
+  },
+  {
+   "path": "mods/kotlinforforge-4.12.0-all.jar",
+   "size": 7442998,
+   "sha1": "962fdb760409d6d71cbf079235f1ca94e3863a22"
+  },
+  {
+   "path": "mods/lmft-1.0.4+1.20.1-forge.jar",
+   "size": 178327,
+   "sha1": "3c0dc40afb617ca2b5b2bbb4f7e831bd75009753"
+  },
+  {
+   "path": "mods/modernfix-forge-5.27.93+mc1.20.1.jar",
+   "size": 1012808,
+   "sha1": "a88e749a40778753fd2f6c649339dc1b6c572e5b"
+  },
+  {
+   "path": "mods/notenoughcrashes-4.4.9+1.20.1-forge.jar",
+   "size": 134885,
+   "sha1": "5d786730c1aee28751d480d497ce893cdff0bb87"
+  },
+  {
+   "path": "mods/oculus-mc1.20.1-1.8.0.jar",
+   "size": 2851119,
+   "sha1": "984f774e71790deaec674c7587bd24e0711871b2"
+  },
+  {
+   "path": "mods/punchy-3.2b-forge-1.20.1.jar",
+   "size": 4500972,
+   "sha1": "0f9106e02fb0549b84436f18ba25c96d6538d17f"
+  },
+  {
+   "path": "mods/reactivemusic-forge-1.3.5+1.20.1.jar",
+   "size": 294838232,
+   "sha1": "e5a9cd891b0f11c476f1d93d87a4c4770c77477c",
+   "url": "https://github.com/SnowUlises/Calaca-War/releases/download/archivos-grandes/reactivemusic-forge-1.3.5-1.20.1.jar"
+  },
+  {
+   "path": "mods/rrls-4.0.6.1+mc1.20.1-forge.jar",
+   "size": 277896,
+   "sha1": "c8f154b0b03dde15c5e901fc7c0c7c701466211d"
+  },
+  {
+   "path": "mods/sound-physics-remastered-forge-1.20.1-1.4.10.jar",
+   "size": 203819,
+   "sha1": "6a1d847f7ec05e96ba3c33cc81fb8dce4c718c44"
+  },
+  {
+   "path": "mods/superbwarfare-0.8.9.2-mc1.20.1-65d985a64-all.jar",
+   "size": 42118965,
+   "sha1": "9e77ea098c2eb752894cd945f37cc7c57bafe766"
+  },
+  {
+   "path": "mods/watut-forge-1.20.1-1.2.3.jar",
+   "size": 435496,
+   "sha1": "d376debf1f96f37dbedf56919baeb7da2dcef9ab"
+  },
+  {
+   "path": "shaderpacks/ComplementaryReimagined_r5.9.3.zip",
+   "size": 553397,
+   "sha1": "838139b54cddb56b2e83cd260d8efd960ac536d6"
+  },
+  {
+   "path": "shaderpacks/ComplementaryReimagined_r5.9.3_sinVoxy.zip",
+   "size": 564140,
+   "sha1": "46c08152131ad082511e139aa179b6ded7582e87"
+  },
+  {
+   "path": "shaderpacks/ComplementaryUnbound_r5.9.3.zip",
+   "size": 553400,
+   "sha1": "2ee08300e1d6f039e63eae8484dddf57b3aaaf67"
+  },
+  {
+   "path": "shaderpacks/ComplementaryUnbound_r5.9.3_sinVoxy.zip",
+   "size": 564143,
+   "sha1": "7ad354bf9465b35bcfb87b4a02cbb129b1edbc24"
+  },
+  {
+   "path": "shaderpacks/Insanity-Shader-Universal-v1.650.zip",
+   "size": 1037373,
+   "sha1": "10f06492bd7cdab8b71de10033e7f199c94e5717"
+  }
+ ]
+}

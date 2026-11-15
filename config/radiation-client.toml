@@ -1,0 +1,42 @@
+
+[hud]
+	#HUD corner: top_left, top_right, bottom_left, bottom_right
+	anchor = "bottom_left"
+	#Pixels from the anchored horizontal edge
+	#Range: 0 ~ 4000
+	offsetX = 6
+	#Pixels from the anchored vertical edge
+	#Range: 0 ~ 4000
+	offsetY = 6
+
+[geiger]
+	#Geiger counter click volume multiplier (panel: shift + right click the counter)
+	#Range: 0.0 ~ 2.0
+	volume = 1.0
+	#Play geiger clicks at all
+	clicks = true
+	#Highlight holes, weak walls and leaks when the counter is read (panel: shift + right click the counter)
+	glow = true
+
+[mask]
+	#Use a simple rubber rim and glass instead of the detailed textured visor; toggle in-game with the mask style key
+	simpleVignette = true
+
+[graphics]
+	#Smooth per-pixel flashlight surface light, including with shader packs
+	flashlightBeam = true
+	#FULL: the beam minds which way each surface faces; SIMPLE: flat light, a little faster
+	#Allowed Values: FULL, SIMPLE
+	flashlightQuality = "FULL"
+	#A visible shaft of light from a flashlight in fog and ash storms
+	flashlightShaft = true
+	#Other players' beams drawn at most (0 = only your own)
+	#Range: 0 ~ 8
+	otherBeams = 8
+	#Particles of the events (ash, rain, the blast's dust): ALL, FEWER (half), MINIMAL (a fifth)
+	#Allowed Values: ALL, FEWER, MINIMAL
+	eventParticles = "ALL"
+	#The mushroom cloud: FULL, or SIMPLE (half the puffs, each a little bigger)
+	#Allowed Values: FULL, SIMPLE
+	mushroomCloud = "FULL"
+
