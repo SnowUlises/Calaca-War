@@ -24,7 +24,8 @@ def sha1(ruta):
 archivos = []
 for carpeta in CARPETAS:
     base = os.path.join(RAIZ, carpeta)
-    for dirpath, _, nombres in os.walk(base):
+    for dirpath, dirs, nombres in os.walk(base):
+        dirs[:] = [d for d in dirs if not d.startswith('.')]  # caches como mods/.connector
         for n in sorted(nombres):
             completo = os.path.join(dirpath, n)
             rel = os.path.relpath(completo, RAIZ).replace(os.sep, "/")
