@@ -58,7 +58,6 @@ async function syncPack({ manifestUrl, gameDir, repair = false, onProgress = () 
     let bajar;
     if (size < 0) bajar = true;
     else if (top(a.path) === 'config' && !repair) bajar = !previo || previo.sha1 !== a.sha1;
-    else if (!repair && previo && previo.sha1 === a.sha1 && size === a.size) bajar = false;
     else bajar = size !== a.size || (await sha1File(local)) !== a.sha1;
     if (bajar) pendientes.push(a);
     else estado.files[a.path] = { sha1: a.sha1, size: a.size };

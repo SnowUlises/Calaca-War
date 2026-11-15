@@ -35,11 +35,11 @@ async function download(url, dest, { sha1, onBytes, tries = 3 } = {}) {
     try {
       const r = await fetch(url, { headers: UA, redirect: 'follow' });
       if (!r.ok || !r.body) throw new Error(`HTTP ${r.status}`);
-      const h = crypto.createHash('sha1');
       const src = Readable.fromWeb(r.body);
-      src.on('data', (d) => { h.update(d); got += d.length; if (onBytes) onBytes(d.length); });
+      src.on('data', (d) => { got += d.length; if (onBytes) onBytes(d.length); });
       await pipeline(src, fs.createWriteStream(tmp));
-      if (sha1 && h.digest('hex') !== sha1) throw new Error('el archivo llego corrupto');
+      // Se verifica lo que quedo escrito en el disco, no lo que paso por la red.
+      if (sha1 && (await sha1File(tmp)) !== sha1) throw new Error('el archivo llego corrupto');
       await fs.promises.rm(dest, { force: true });
       await fs.promises.rename(tmp, dest);
       return;
