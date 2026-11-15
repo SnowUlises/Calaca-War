@@ -14,6 +14,7 @@ function velas(n) {
   [...$('tray').children].forEach((p, i) => p.classList.toggle('lit', i < n));
   [...$('scene').children].forEach((img, i) => img.classList.toggle('on', i === n));
   $('count').textContent = `${n} / 8`;
+  if (window.fx) window.fx.velas(n);
   $('tray').setAttribute('aria-label', `${n} de 8 velas encendidas`);
 }
 function estado(titulo, sub, clase = 'gold') {
@@ -24,6 +25,7 @@ function estado(titulo, sub, clase = 'gold') {
 function boton(texto, activo) {
   $('playTxt').textContent = texto;
   $('play').disabled = !activo;
+  $('play').classList.toggle('ready', activo && listo && !enError);
 }
 const mb = (b) => `${Math.round(b / 1e6)} MB`;
 
@@ -66,7 +68,7 @@ $('play').addEventListener('click', async () => {
   boton('JUGAR', false);
   estado('EL TRONO ESPERA', 'Abriendo Minecraft\u2026');
   const r = await api.play();
-  if (!r.ok) { estado('SE APAGARON LAS VELAS', r.error, 'err'); boton('JUGAR', true); return; }
+  if (!r.ok) { estado(r.manual ? 'ABR\u00cd MINECRAFT' : 'SE APAGARON LAS VELAS', r.error, r.manual ? 'gold' : 'err'); $('sub').title = r.error; boton('JUGAR', true); return; }
   setTimeout(() => { estado('EL TRONO ESPERA', 'Eleg\u00ed el perfil Calaca War y dale a Jugar'); boton('JUGAR', true); }, 6000);
 });
 
@@ -79,6 +81,7 @@ function ir(tab) {
   $('v-news').hidden = tab !== 'news';
   $('v-settings').hidden = tab !== 'settings';
   if (tab === 'news' && !noticias) cargarNovedades();
+  if (window.fx) window.fx.adentro(tab !== 'home');
 }
 
 // ---- novedades (novedades.md del repo)

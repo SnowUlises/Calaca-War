@@ -80,7 +80,8 @@ ipcMain.handle('play', async () => {
     const cfg = settings.get();
     mc.cerrarLauncherOficial();
     mc.writeProfile({ versionId: versionId(pack.minecraft, pack.forge), gameDir: cfg.gameDir, ram: cfg.ram });
-    mc.openOfficialLauncher();
+    const r = await mc.openOfficialLauncher();
+    if (!r.ok) return { ok: false, manual: true, error: 'No encontr\u00e9 el launcher de Minecraft. El perfil Calaca War ya est\u00e1 listo: abrilo vos y eleg\u00ed ese perfil.' };
     if (cfg.closeOnLaunch) setTimeout(() => app.quit(), 2500);
     return { ok: true };
   } catch (e) {

@@ -5,7 +5,6 @@ const os = require('os');
 const { spawn, spawnSync } = require('child_process');
 
 const WIN = process.platform === 'win32';
-const STORE_APP = 'Microsoft.4297127D64EC6_8wekyb3d8bbwe!Minecraft';
 const PERFIL = 'calaca-war';
 const GC = '-XX:+UnlockExperimentalVMOptions -XX:+UseG1GC -XX:G1NewSizePercent=20 -XX:G1ReservePercent=20 -XX:MaxGCPauseMillis=50 -XX:G1HeapRegionSize=32M';
 
@@ -52,17 +51,61 @@ function writeProfile({ versionId, gameDir, ram, icon }) {
   }
 }
 
-function openOfficialLauncher() {
-  if (!WIN) return false;
+// Busca el ejecutable del launcher oficial. Orden: instalador clasico, instalacion de la app
+// Xbox (XboxGames en cualquier disco) y, por ultimo, la ubicacion que reporta Windows del paquete.
+function exesEn(dir) {
+  let items = [];
+  try { items = fs.readdirSync(dir); } catch { return []; }
+  const exes = items.filter((n) => /\.exe$/i.test(n) && /minecraft/i.test(n) && !/installer|uninstall|crash|helper/i.test(n));
+  const puntos = (n) => (/^minecraft\.exe$/i.test(n) ? 3 : /^minecraftlauncher\.exe$/i.test(n) ? 2 : 1);
+  return exes.sort((x, y) => puntos(y) - puntos(x)).map((n) => path.join(dir, n));
+}
+
+function rutaPaquete() {
+  try {
+    const r = spawnSync('powershell.exe', ['-NoProfile', '-NonInteractive', '-Command',
+      '(Get-AppxPackage -Name Microsoft.4297127D64EC6 | Select-Object -First 1).InstallLocation'],
+    { encoding: 'utf8', windowsHide: true, timeout: 10000 });
+    return (r.stdout || '').trim();
+  } catch { return ''; }
+}
+
+function buscarLauncher() {
   const env = process.env;
-  const exes = [
-    env['ProgramFiles(x86)'] && path.join(env['ProgramFiles(x86)'], 'Minecraft Launcher', 'MinecraftLauncher.exe'),
-    env.ProgramFiles && path.join(env.ProgramFiles, 'Minecraft Launcher', 'MinecraftLauncher.exe'),
-    'C:\\XboxGames\\Minecraft Launcher\\Content\\Minecraft.exe',
-  ].filter((p) => p && fs.existsSync(p));
-  if (exes.length) spawn(exes[0], [], { detached: true, stdio: 'ignore' }).unref();
-  else spawn('explorer.exe', [`shell:AppsFolder\\${STORE_APP}`], { detached: true, stdio: 'ignore' }).unref();
-  return true;
+  const cands = [];
+  for (const pf of [env['ProgramFiles(x86)'], env.ProgramFiles]) {
+    if (pf) cands.push(path.join(pf, 'Minecraft Launcher', 'MinecraftLauncher.exe'));
+  }
+  for (const c of cands) if (fs.existsSync(c)) return c;
+  for (const letra of 'CDEFGHIJKLMNOPQRSTUVWXYZ') {
+    const base = `${letra}:\\XboxGames\\Minecraft Launcher`;
+    if (!fs.existsSync(base)) continue;
+    const exes = [...exesEn(path.join(base, 'Content')), ...exesEn(base)];
+    if (exes.length) return exes[0];
+  }
+  const paquete = rutaPaquete();
+  if (paquete && !/\\WindowsApps\\/i.test(paquete)) {
+    const exes = [...exesEn(paquete), ...exesEn(path.join(paquete, 'Content'))];
+    if (exes.length) return exes[0];
+  }
+  return null;
+}
+
+function abrir(exe) {
+  return new Promise((resolve) => {
+    try {
+      const p = spawn(exe, [], { cwd: path.dirname(exe), detached: true, stdio: 'ignore' });
+      p.once('error', () => resolve(false));
+      p.once('spawn', () => { p.unref(); resolve(true); });
+    } catch { resolve(false); }
+  });
+}
+
+async function openOfficialLauncher() {
+  if (!WIN) return { ok: false };
+  const exe = buscarLauncher();
+  if (exe && (await abrir(exe))) return { ok: true, exe };
+  return { ok: false };
 }
 
 module.exports = { mcDir, writeProfile, openOfficialLauncher, cerrarLauncherOficial };
