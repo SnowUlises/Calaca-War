@@ -7,7 +7,7 @@
 [kill_message]
 	#Set true if you want to show kill message
 	#是否显示击杀提示
-	show_kill_message = true
+	show_kill_message = false
 	#The position of kill message
 	#击杀提示的位置
 	#Allowed Values: LEFT_TOP, LEFT_BOTTOM, RIGHT_TOP, RIGHT_BOTTOM

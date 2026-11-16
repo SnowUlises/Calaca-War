@@ -1,12 +1,37 @@
 {
  "formato": 1,
  "nombre": "Calaca War",
- "version": "1.0.0",
+ "version": "1.1.0",
  "minecraft": "1.20.1",
  "forge": "47.4.0",
  "base_url": "https://raw.githubusercontent.com/SnowUlises/Calaca-War/main/",
  "novedades": "https://raw.githubusercontent.com/SnowUlises/Calaca-War/main/novedades.md",
  "archivos": [
+  {
+   "path": "config/CoroUtil/General.toml",
+   "size": 133,
+   "sha1": "5591e4868d6f01b3c66c308869f1f180728b2eef"
+  },
+  {
+   "path": "config/MouseTweaks.cfg",
+   "size": 135,
+   "sha1": "651b3e4db2d430dc1da3566b2984b264061a6794"
+  },
+  {
+   "path": "config/ReactiveMusic.json5",
+   "size": 302,
+   "sha1": "82981352065b7f8f82441d581bfe5d88e846163a"
+  },
+  {
+   "path": "config/advancementplaques-common.toml",
+   "size": 3024,
+   "sha1": "a8e3e2fd8d86879c8a88aae5adf0fb0e143bbd0c"
+  },
+  {
+   "path": "config/ambientsounds-client.json",
+   "size": 4198,
+   "sha1": "e29bba5ead5073bd4f0149c3c6738084d8d8e307"
+  },
   {
    "path": "config/beforethefall-filming.properties",
    "size": 221,
@@ -16,6 +41,11 @@
    "path": "config/beforethefall-survival.toml",
    "size": 4060,
    "sha1": "36d00ad92f33355c50209d3fa7377c9dc7d152e3"
+  },
+  {
+   "path": "config/betterzoom-client.toml",
+   "size": 1234,
+   "sha1": "3672506fce8680d330a077bc07e0e029086594cf"
   },
   {
    "path": "config/c2me.toml",
@@ -50,7 +80,7 @@
   {
    "path": "config/calacawar_core/avisos.txt",
    "size": 1,
-   "sha1": "da4b9237bacccdf19c0760cab7aec4a8359010b0"
+   "sha1": "b6589fc6ab0dc82cf12099d1c2d40ab994e8410c"
   },
   {
    "path": "config/calacawar_core/defense.json",
@@ -128,9 +158,34 @@
    "sha1": "de8add0f213fe49e16011076be4efa52e5f4b570"
   },
   {
+   "path": "config/emi.css",
+   "size": 10189,
+   "sha1": "ce0fedbfa2556c8c1f1e320eb82af032ba81e8c3"
+  },
+  {
+   "path": "config/entity_model_features.json",
+   "size": 1293,
+   "sha1": "067ba1f9805b8421b20b708dbafddf3459c717e5"
+  },
+  {
+   "path": "config/entity_texture_features.json",
+   "size": 1452,
+   "sha1": "5fc3d7567c74811f362b997baa24dc25c2163b6e"
+  },
+  {
+   "path": "config/entityculling.json",
+   "size": 2248,
+   "sha1": "71d872172923ba0b593d8654bfd596f9520ddc8b"
+  },
+  {
    "path": "config/fabric/indigo-renderer.properties",
    "size": 290,
-   "sha1": "2c30e12ea76d2f4c1beecd2a2f23cc8fc9d10d5f"
+   "sha1": "5c33f0108d758aa8acfc152a976ae1cae393a10a"
+  },
+  {
+   "path": "config/ferritecore-mixin.toml",
+   "size": 1516,
+   "sha1": "bada32b53873ce4121ffefb82ca804c94aef2e0b"
   },
   {
    "path": "config/flywheel-client.toml",
@@ -168,9 +223,84 @@
    "sha1": "4b1c05a91941e7137681be5f15f07f943fecdfc0"
   },
   {
+   "path": "config/immediatelyfast.json",
+   "size": 1060,
+   "sha1": "adcb21b0ad5f7f1c124517ff64fc701a737e4ea1"
+  },
+  {
+   "path": "config/jade/hide-blocks.json",
+   "size": 191,
+   "sha1": "8b3297cc5db5ed84dd48d2905fb21ee3063e0e25"
+  },
+  {
+   "path": "config/jade/hide-entities.json",
+   "size": 325,
+   "sha1": "548656ff89ad489730a4b5fdf071a6e98fcd5033"
+  },
+  {
+   "path": "config/jade/jade.json",
+   "size": 975,
+   "sha1": "a50b1473e4a33916b7491f803495ea9345858e93"
+  },
+  {
+   "path": "config/jade/plugins.json",
+   "size": 1927,
+   "sha1": "d6aff318eeeeec9d7f86b6a3b5085ea5ac6d11ec"
+  },
+  {
+   "path": "config/jade/sort-order.json",
+   "size": 1798,
+   "sha1": "a3fc4790535dbe9469272f3e41a72889416971a6"
+  },
+  {
+   "path": "config/jeed-client.toml",
+   "size": 536,
+   "sha1": "c3dd867e2224ad16fc5812a2597405456eef4b13"
+  },
+  {
+   "path": "config/knightlib.toml",
+   "size": 923,
+   "sha1": "aaaf6d3bdb7e52d69e160232e57cf16a6846b26e"
+  },
+  {
+   "path": "config/legendarytooltips-common.toml",
+   "size": 8283,
+   "sha1": "236a1a7858c31c29f236e0e993d967ebf493396b"
+  },
+  {
+   "path": "config/lmft.json",
+   "size": 33,
+   "sha1": "2e80e8d24b405381d6ae8d32f51c04d88fec5cc2"
+  },
+  {
+   "path": "config/modernfix-common.toml",
+   "size": 107,
+   "sha1": "046452d3af87f5c1fd5de5650e3d1b73c930fd92"
+  },
+  {
+   "path": "config/modernfix-mixins.properties",
+   "size": 6643,
+   "sha1": "3e2070a7bb4744c81cd078933c9c745d76fd6ae2"
+  },
+  {
+   "path": "config/nerb.yaml",
+   "size": 547,
+   "sha1": "b1069490e0dd87010b6579736b50797ff746dadf"
+  },
+  {
+   "path": "config/notenoughcrashes.json",
+   "size": 156,
+   "sha1": "2b792fb7eb312e343c5f5fae080e967de0aae1f7"
+  },
+  {
    "path": "config/oculus.properties",
-   "size": 285,
-   "sha1": "8e01d0d5b225978355d1c917b71fea98e92a47cc"
+   "size": 286,
+   "sha1": "ccda86232b67da3819e8ad246ccfae505eab72e5"
+  },
+  {
+   "path": "config/olympus.toml",
+   "size": 13966,
+   "sha1": "8ecd3669d77cefbf7c3740103efd668fd716af57"
   },
   {
    "path": "config/opposing_force-common.toml",
@@ -198,6 +328,21 @@
    "sha1": "c9fb5ff03771a69d32badb5d695bf86b1ee81c88"
   },
   {
+   "path": "config/rrls.toml",
+   "size": 901,
+   "sha1": "3442625d9e291ecf33372b4e4755766fced77e92"
+  },
+  {
+   "path": "config/serilum/collective.json",
+   "size": 3147,
+   "sha1": "c92ebcfb9fec122ec7bcbb61ecc48838d697579c"
+  },
+  {
+   "path": "config/serilum/deathbackup.json",
+   "size": 781,
+   "sha1": "9771d97592985533a573b05a843ba684524e64b6"
+  },
+  {
    "path": "config/sodium-fingerprint.json",
    "size": 427,
    "sha1": "1892735f2eee830f18fbd953cd49c848417819d7"
@@ -213,9 +358,34 @@
    "sha1": "ec80b098cc66d77092a0869ad4bed3799972c45d"
   },
   {
+   "path": "config/sound_physics_remastered/allowed_sounds.properties",
+   "size": 76859,
+   "sha1": "e359fb58d6a550150d7b5a16f72e923aced52782"
+  },
+  {
+   "path": "config/sound_physics_remastered/occlusion.properties",
+   "size": 4831,
+   "sha1": "63e8843f243c38bc7aa44d99ce4f562991890350"
+  },
+  {
+   "path": "config/sound_physics_remastered/reflectivity.properties",
+   "size": 4713,
+   "sha1": "95feb43eb67757038518212b08739cb39bb9763e"
+  },
+  {
+   "path": "config/sound_physics_remastered/soundphysics.properties",
+   "size": 5105,
+   "sha1": "8c28f59d92aacab3d3c3c541326039166fad00b7"
+  },
+  {
+   "path": "config/spark/profile-2026-11-16_14.39.57.sparkprofile",
+   "size": 1889065,
+   "sha1": "f9ab683837df8320668f3860e4f7fe907e620d4a"
+  },
+  {
    "path": "config/superbwarfare-client.toml",
-   "size": 4230,
-   "sha1": "ca0edbf6516aa0b826e7e5374b74c883db6ee2fd"
+   "size": 4231,
+   "sha1": "1a093e3991ae8e4f7a8379dd06c7c11f3b8209e7"
   },
   {
    "path": "config/superbwarfare-common.toml",
@@ -223,9 +393,39 @@
    "sha1": "6f401a59c1cfbe63ee7c8ab56d5aeda2eeeff4cd"
   },
   {
+   "path": "config/transition.json",
+   "size": 97,
+   "sha1": "8b50cd4b9956dc3443acd38e47f80e23ff7712f5"
+  },
+  {
+   "path": "config/trender.json",
+   "size": 44,
+   "sha1": "8b2dd1fd2ca9c7dc83354cd2c649c486864cea76"
+  },
+  {
    "path": "config/voxy-config.json",
    "size": 237,
    "sha1": "8ff2583f21ac50d9f39b8dc018d87b837bd7aba1"
+  },
+  {
+   "path": "config/watut-client.toml",
+   "size": 3236,
+   "sha1": "33ae71610a948dcf58759ce195a4e7dd404ae522"
+  },
+  {
+   "path": "config/watut-common.toml",
+   "size": 154,
+   "sha1": "d3e0021b6085144229ef72fe350a0fcd4bda4a41"
+  },
+  {
+   "path": "config/watut-item-arm-adjustments.json",
+   "size": 3367,
+   "sha1": "2cfa88c57c35df26af1391acb7f2f8eb8abd53ab"
+  },
+  {
+   "path": "config/watut-server.toml",
+   "size": 2880,
+   "sha1": "d2f0dac6010bcb94c8a46e71f609aeb6b3acc53d"
   },
   {
    "path": "config/xx_tripod_invasion-common.toml",
@@ -318,6 +518,16 @@
    "sha1": "5b976f6e76ec74cdef21865e31f56bcb11558db7"
   },
   {
+   "path": "mods/Terralith_1.20.x_v2.5.4.jar",
+   "size": 3156901,
+   "sha1": "79e1409b8db4ce86df9d6d6730f09c4bd8860a30"
+  },
+  {
+   "path": "mods/Terralith_No_Structures_v1.1.jar",
+   "size": 11353,
+   "sha1": "ae416694cb9ccec09bf18d00f1d7cc135f0490ff"
+  },
+  {
    "path": "mods/architectury-9.2.14-forge.jar",
    "size": 580602,
    "sha1": "a52918a500ff421180a1cbd1a0cabee712134ec4"
@@ -328,19 +538,29 @@
    "sha1": "b9d91670f51d6a50b143f0351afc3c2203a69d0f"
   },
   {
+   "path": "mods/betterzoom-forge-1.20.1-3.1.1.jar",
+   "size": 128935,
+   "sha1": "1b391b8a388b4173ae58b8a863c4ae882b1ffb68"
+  },
+  {
    "path": "mods/calacawar-1.0.0.jar",
-   "size": 418540,
-   "sha1": "ec259502fd4157024f04e169560b98f5cd9b0044"
+   "size": 439346,
+   "sha1": "2f8a87dfc031acaa04f39b7ea51731c3c0c944a8"
   },
   {
    "path": "mods/calacawar_core-1.0.0.jar",
-   "size": 2617146,
-   "sha1": "727f2f0fb1b44c9071518e8e732c7deef2991ae7"
+   "size": 2737321,
+   "sha1": "81e9f42d8f94a4e64940a3a69328ae958242eb7d"
   },
   {
    "path": "mods/chinchulin-1.20.1-1.0.0.jar",
    "size": 25481,
    "sha1": "135c68c973b7babf9fae7498eea16d2766c9f0cd"
+  },
+  {
+   "path": "mods/collective-1.20.1-8.86.jar",
+   "size": 1131568,
+   "sha1": "86de515018d3bb853cf0a91c026acde748c3e29c"
   },
   {
    "path": "mods/coroutil-forge-1.20.1-1.3.7.jar",
@@ -353,6 +573,11 @@
    "sha1": "452175b95ad3db6ff58bb8968f6bf7a9d1e0f480"
   },
   {
+   "path": "mods/deathbackup-1.20.1-3.7.jar",
+   "size": 37458,
+   "sha1": "606249f4bb4321c215d5f07c38dc34ebf1d002d4"
+  },
+  {
    "path": "mods/embeddium-0.3.31+mc1.20.1.jar",
    "size": 1320675,
    "sha1": "bb2fa8f3e493af16af9160d049f96c614a1faf2f"
@@ -361,6 +586,16 @@
    "path": "mods/emi-1.1.24+1.20.1+forge.jar",
    "size": 1121750,
    "sha1": "ea320200878e4a49196760234a22da763671520a"
+  },
+  {
+   "path": "mods/entity_model_features-3.3.12-1.20.1-forge.jar",
+   "size": 840669,
+   "sha1": "adcec598039ec59a805a974de9d23ff5eede8299"
+  },
+  {
+   "path": "mods/entity_texture_features-7.2.7-1.20.1-forge.jar",
+   "size": 1004366,
+   "sha1": "5a331e97045010b4851e7fc0fb8ac5184c6adcf7"
   },
   {
    "path": "mods/entityculling-forge-1.12.1-mc1.20.1.jar",
@@ -408,6 +643,11 @@
    "sha1": "178621b5bf2adb0cfa14f84871a6d3e9edcfc15a"
   },
   {
+   "path": "mods/knightlib-forge-1.20.1-2.0.5.jar",
+   "size": 1081342,
+   "sha1": "9b8d89d2e3128ca061208d8f7b725a65c26a8928"
+  },
+  {
    "path": "mods/kotlinforforge-4.12.0-all.jar",
    "size": 7442998,
    "sha1": "962fdb760409d6d71cbf079235f1ca94e3863a22"
@@ -433,9 +673,9 @@
    "sha1": "984f774e71790deaec674c7587bd24e0711871b2"
   },
   {
-   "path": "mods/punchy-3.2b-forge-1.20.1.jar",
-   "size": 4500972,
-   "sha1": "0f9106e02fb0549b84436f18ba25c96d6538d17f"
+   "path": "mods/olympusmythology-forge-1.20.1-1.1.1.jar",
+   "size": 2110348,
+   "sha1": "996e70c7d8927dd8cfa5ce81896e05e7ea8d1236"
   },
   {
    "path": "mods/reactivemusic-forge-1.3.5+1.20.1.jar",
@@ -462,6 +702,31 @@
    "path": "mods/watut-forge-1.20.1-1.2.3.jar",
    "size": 435496,
    "sha1": "d376debf1f96f37dbedf56919baeb7da2dcef9ab"
+  },
+  {
+   "path": "resourcepacks/DetailedAnimationsReworked - V1.15.zip",
+   "size": 116175,
+   "sha1": "1d0ac0d5d7514a3df02de06a598ae95697339a21"
+  },
+  {
+   "path": "resourcepacks/FA+All_Extensions-v1.10.1.zip",
+   "size": 548952,
+   "sha1": "33c6cc4d621ba7f27e2d5c45269ac28f2287deae"
+  },
+  {
+   "path": "resourcepacks/FreshAnimations_v1.11.2_1.20+.zip",
+   "size": 742790,
+   "sha1": "c0f564f3b9c12762923015eefad53edbdbbd3d96"
+  },
+  {
+   "path": "resourcepacks/§6Immersive_Interfaces_Modded.zip",
+   "size": 699795,
+   "sha1": "3b5a88c947fe299f20e9ae236e113355fadc89f5"
+  },
+  {
+   "path": "resourcepacks/§6Immersive§8_§6Interfaces§8.zip",
+   "size": 1197001,
+   "sha1": "176aa5cf21d2c6b6a24d11cf0e74aed4c4ca9621"
   },
   {
    "path": "shaderpacks/ComplementaryReimagined_r5.9.3.zip",
