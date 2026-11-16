@@ -107,3 +107,4 @@ input[type=range] { width: 100%; height: 24px; margin: 0; accent-color: var(--re
 }
 
 .path.acct { direction: ltr; font-family: inherit; font-size: 14px; color: var(--ink); }
+.sub.full { white-space: normal; overflow: visible; font-size: 12px; line-height: 1.35; user-select: text; }

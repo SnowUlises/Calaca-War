@@ -20,6 +20,7 @@ function estado(titulo, sub, clase = 'hot') {
   $('status').textContent = titulo;
   $('status').className = clase;
   $('sub').textContent = sub || '\u00a0';
+  $('sub').classList.toggle('full', clase === 'err');
 }
 function boton(texto, activo) {
   $('playTxt').textContent = texto;
