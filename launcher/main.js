@@ -1,10 +1,11 @@
-const { app, BrowserWindow, ipcMain, dialog } = require('electron');
+const { app, BrowserWindow, ipcMain, dialog, shell } = require('electron');
+const fs = require('fs');
 const path = require('path');
 const settings = require('./src/settings');
 const auth = require('./src/auth');
 const { syncPack } = require('./src/sync');
 const { javaPath } = require('./src/java');
-const { lanzar } = require('./src/game');
+const { lanzar, borrarJarsRotos } = require('./src/game');
 const { fetchText } = require('./src/net');
 
 const REPO = 'SnowUlises/Calaca-War';
@@ -55,12 +56,17 @@ async function preparar(repair) {
   ocupado = true;
   pack = null;
   try {
+    if (repair) {
+      send('progress', { phase: 'check' });
+      await borrarJarsRotos(settings.get().gameDir);
+      await fs.promises.rm(path.join(app.getPath('userData'), 'java'), { recursive: true, force: true });
+    }
     const r = await syncPack({
       manifestUrl: MANIFEST, gameDir: settings.get().gameDir, repair,
       onProgress: (p) => send('progress', { ...p, frac: p.phase === 'download' && p.total ? p.bytes / p.total : 0 }),
     });
     pack = r;
-    return { ok: true, version: r.version, forge: r.forge, minecraft: r.minecraft };
+    return { ok: true, version: r.version, forge: r.forge, minecraft: r.minecraft, sinConexion: !!r.sinConexion };
   } catch (e) {
     return { ok: false, error: e.message || String(e) };
   } finally {
@@ -87,11 +93,11 @@ async function jugar() {
         send('play', e);
         if (e.abierto && win) win.hide();
       },
-      onCerrado: (code) => {
+      onCerrado: (code, motivo) => {
         jugando = false;
         if (settings.get().closeOnLaunch && code === 0) return app.quit();
         if (win) { win.show(); win.focus(); }
-        send('closed', { code });
+        send('closed', { code, motivo });
       },
     });
     return { ok: true };
@@ -115,6 +121,12 @@ ipcMain.handle('settings:set', (_e, cambios) => settings.set(cambios || {}));
 ipcMain.handle('settings:pickDir', async () => {
   const r = await dialog.showOpenDialog(win, { title: 'Carpeta del juego', properties: ['openDirectory', 'createDirectory'], defaultPath: settings.get().gameDir });
   return r.canceled || !r.filePaths[0] ? settings.get() : settings.set({ gameDir: r.filePaths[0] });
+});
+ipcMain.handle('openDir', async () => {
+  const dir = settings.get().gameDir;
+  await fs.promises.mkdir(dir, { recursive: true });
+  const err = await shell.openPath(dir);
+  return err ? { ok: false, error: err } : { ok: true };
 });
 ipcMain.handle('news', async () => { try { return await fetchText(NOVEDADES); } catch { return null; } });
 ipcMain.on('win:min', () => win && win.minimize());

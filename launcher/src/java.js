@@ -38,8 +38,7 @@ function javaDelLauncher(mcDir) {
 async function javaPropio(dataDir, onText) {
   const dir = path.join(dataDir, 'java17');
   const hallados = [];
-  buscar(dir, 4, hallados);
-  if (hallados.length) return hallados[0];
+  await fs.promises.rm(dir, { recursive: true, force: true });
   if (!WIN) throw new Error('No se encontro Java 17.');
   onText('Bajando Java 17');
   const zip = path.join(dataDir, 'java17.zip');
@@ -51,17 +50,29 @@ async function javaPropio(dataDir, onText) {
   return hallados[0];
 }
 
-// Java 17 para Forge 1.20.1: el del launcher oficial, el de Modrinth, el del sistema o uno propio.
+// Version mayor de un Java leyendo el archivo "release" de su carpeta (sin ejecutarlo).
+function mayor(javaExe) {
+  try {
+    const txt = fs.readFileSync(path.join(path.dirname(path.dirname(javaExe)), 'release'), 'utf8');
+    const m = /JAVA_VERSION="(\d+)/.exec(txt);
+    return m ? Number(m[1]) : 0;
+  } catch { return 0; }
+}
+const es17 = (p) => p && fs.existsSync(p) && mayor(p) === 17;
+
+// Java 17 para Forge 1.20.1: el propio ya bajado, el de Modrinth, el del launcher oficial o uno nuevo.
 async function javaPath(dataDir, onText = () => {}) {
   const env = process.env;
+  const propios = [];
+  buscar(path.join(dataDir, 'java17'), 4, propios);
+  const propio = propios.find(es17);
+  if (propio) return conW(propio);
   const hallados = [];
-  if (env.APPDATA) {
-    buscar(path.join(env.APPDATA, 'ModrinthApp', 'meta', 'java_versions'), 4, hallados);
-    const j17 = hallados.find((p) => /17/.test(p));
-    if (j17) return conW(j17);
-  }
+  if (env.APPDATA) buscar(path.join(env.APPDATA, 'ModrinthApp', 'meta', 'java_versions'), 4, hallados);
   const mc = javaDelLauncher(env.APPDATA ? path.join(env.APPDATA, '.minecraft') : '');
-  if (mc && /gamma/i.test(mc)) return conW(mc);
+  if (mc) hallados.push(mc);
+  const ok = hallados.find(es17);
+  if (ok) return conW(ok);
   return conW(await javaPropio(dataDir, onText));
 }
 

@@ -50,7 +50,7 @@ async function preparar(repair = false) {
   if (r.ok) {
     listo = true; version = r.version;
     velas(8);
-    estado('El trono te espera', `Modpack al d\u00eda \u00b7 v${r.version}`);
+    estado('El trono te espera', r.sinConexion ? `Sin conexi\u00f3n con GitHub \u00b7 jug\u00e1s con la v${r.version}` : `Modpack al d\u00eda \u00b7 v${r.version}`);
     boton('JUGAR', true);
     pintarVersion();
   } else {
@@ -74,7 +74,8 @@ api.onPlay((p) => {
   estado(p.abierto ? 'A jugar' : 'Despertando al trono', `${p.text}\u2026${pct}`);
 });
 api.onClosed((c) => {
-  estado('El trono te espera', c.code === 0 ? `Modpack al d\u00eda \u00b7 v${version}` : 'Minecraft se cerr\u00f3 con un error. Mir\u00e1 .calacawar/ultimo-juego.log', c.code === 0 ? 'hot' : 'err');
+  if (c.code === 0) estado('El trono te espera', `Modpack al d\u00eda \u00b7 v${version}`);
+  else estado('Minecraft se cerr\u00f3', c.motivo || 'Se cerr\u00f3 con un error. El detalle est\u00e1 en .calacawar/ultimo-juego.log (Ajustes \u2192 Abrir).', 'err');
   boton('JUGAR', true);
 });
 
@@ -161,6 +162,7 @@ $('pick').addEventListener('click', async () => {
   pintarAjustes(s);
   if (s.gameDir !== antes) { ir('home'); preparar(); }
 });
+$('open').addEventListener('click', () => api.openDir());
 $('repair').addEventListener('click', () => { ir('home'); preparar(true); });
 
 $('min').addEventListener('click', () => api.minimize());

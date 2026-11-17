@@ -8,7 +8,7 @@ let cache = null;
 function defaults() {
   const gb = Math.round(os.totalmem() / 2 ** 30);
   const base = process.platform === 'win32' ? process.env.APPDATA : os.homedir();
-  return { ram: gb >= 16 ? 6 : gb >= 12 ? 5 : 4, gameDir: path.join(base, '.calacawar'), closeOnLaunch: true };
+  return { ram: Math.max(2, Math.min(gb >= 16 ? 6 : gb >= 12 ? 5 : 4, gb - 3)), gameDir: path.join(base, '.calacawar'), closeOnLaunch: true };
 }
 
 function init(userData) {

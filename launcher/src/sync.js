@@ -43,7 +43,17 @@ async function limpiar(gameDir) {
 
 async function syncPack({ manifestUrl, gameDir, repair = false, onProgress = () => {} }) {
   onProgress({ phase: 'check' });
-  const manifest = await fetchJson(manifestUrl);
+  let manifest;
+  try {
+    manifest = await fetchJson(manifestUrl);
+  } catch (e) {
+    // Sin conexion con GitHub: si ya estaba instalado, se juega con lo que hay.
+    const previo = leerEstado(path.join(gameDir, '.calacawar', 'state.json'));
+    if (previo.minecraft && previo.forge && Object.keys(previo.files).length) {
+      return { version: previo.version, minecraft: previo.minecraft, forge: previo.forge, bajados: 0, sinConexion: true };
+    }
+    throw new Error(`No se pudo revisar el modpack. Fijate tu conexi\u00f3n. (${e.message})`);
+  }
   if (manifest.formato !== 1) throw new Error('Este launcher es viejo para el modpack. Actualizalo.');
   const estadoFile = path.join(gameDir, '.calacawar', 'state.json');
   const estado = leerEstado(estadoFile);
@@ -76,7 +86,7 @@ async function syncPack({ manifestUrl, gameDir, repair = false, onProgress = () 
   let hechos = 0;
   const avisar = () => onProgress({ phase: 'download', bytes, total, done: hechos, count: pendientes.length });
   const onBytes = (n) => { bytes += n; avisar(); };
-  const guardar = () => fs.promises.writeFile(estadoFile, JSON.stringify({ version: manifest.version, files: estado.files }));
+  const guardar = () => fs.promises.writeFile(estadoFile, JSON.stringify({ version: manifest.version, minecraft: manifest.minecraft, forge: manifest.forge, files: estado.files }));
 
   async function bajarUno(a) {
     const dest = path.join(gameDir, a.path);

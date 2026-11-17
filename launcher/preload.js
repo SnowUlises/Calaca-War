@@ -6,6 +6,7 @@ contextBridge.exposeInMainWorld('launcher', {
   play: () => ipcRenderer.invoke('play'),
   setSettings: (c) => ipcRenderer.invoke('settings:set', c),
   pickDir: () => ipcRenderer.invoke('settings:pickDir'),
+  openDir: () => ipcRenderer.invoke('openDir'),
   news: () => ipcRenderer.invoke('news'),
   minimize: () => ipcRenderer.send('win:min'),
   close: () => ipcRenderer.send('win:close'),
